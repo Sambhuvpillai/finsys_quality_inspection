@@ -1,0 +1,84 @@
+{% extends 'app1/base.html' %}
+
+{% block body %}
+    {% load static %}
+    <div class="page-content">
+        <div class="card radius-15">
+            <div class="card-body">
+                <div class="card-title">
+                    <center><h3 class="mb-0">QUALITY CERTIFICATE</h3></center>
+                </div>
+                <hr/>
+            </div>
+        </div>
+        <div class="card radius-15" style="background-color: #243e54;">
+            <div class="card-body">
+                <a class="" href="#">
+                    <button id="myBtn" class="btn btn-outline-info text-grey">Download
+                        
+                    </button>
+                    <a class="" href="{% url 'edit_certificate_page'%}">
+                        <button id="myBtn" class="btn btn-outline-info text-grey">Edit
+                            
+                        </button>
+                        <a class="" href="#">
+                            <button id="myBtn" class="btn btn-outline-info text-grey">Delete
+                                
+                            </button>
+                
+                <hr/>
+                <form action="#" method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                        <div class="row">
+                            <div class="col-md-4 mt-3">
+                                <label> Date</label>
+                                <input type="date" class="form-control" id="" name=""
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            
+                            <div class="col-md-4 mt-3">
+                                <label>Name</label>
+                                <input type="text" class="form-control" id="" name=""
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+
+                            <div class="col-md-4 mt-3">
+                                <label>Inspection Date</label>
+                                <input type="date" class="form-control" id="" name=""
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <label for="validationCustom03">SKU Number</label>
+                                <input type="text" class="form-control" id="" name=""
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                           
+                            <div class="col-md-4 mt-3">
+                                <label for="validationCustom03">Product name</label>
+                                <input type="text" class="form-control" id="" name=""
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            
+                        {% comment %} </div>
+                        <div class="row"> {% endcomment %}
+                            
+                           
+                            {% comment %} <button class="btn btn-outline-info rounded-pill text-grey w-100 mt-3 mb-3"
+                                        type="submit">
+                                    submit
+                                </button> {% endcomment %}
+                        </div>
+                       
+                </form>
+            </div>
+        </div>
+    </div>
+   
+   
+{% endblock %}

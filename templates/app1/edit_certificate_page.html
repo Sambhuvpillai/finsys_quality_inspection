@@ -6,7 +6,7 @@
         <div class="card radius-15">
             <div class="card-body">
                 <div class="card-title">
-                    <center><h3 class="mb-0">QUALITY INSPECTION</h3></center>
+                    <center><h3 class="mb-0">EDIT QUALITY CERTIFICATE</h3></center>
                 </div>
                 <hr/>
             </div>
@@ -19,6 +19,12 @@
                     {% csrf_token %}
                     {% comment %} {% if user.is_authenticated %} {% endcomment %}
                         <div class="row">
+                            <div class="col-md-4 mt-3">
+                                <label> Date</label>
+                                <input type="date" class="form-control" id="" name=""
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
                             
                             <div class="col-md-4 mt-3">
                                 <label>Name</label>
@@ -39,52 +45,18 @@
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-4 mt-3"></div>
                             
-                        </div>
-                        <div class="row">
                             <div class="col-md-4 mt-3">
                                 <label for="validationCustom03">Product name</label>
                                 <input type="text" class="form-control" id="" name=""
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-4 mt-3">
-                                <div id="hello">
-                                    <label for="validationCustom03">Inspected Numbers</label>
-                                <input type="number" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">NonInspected Numbers</label>
-                                <input type="number" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mt-3">
-                                <lebel for="course">Select you department</lebel>
-                                    <select class="form-control" name="sel">
-                                            {% comment %} {% for course in courses %}
-                                            <option value="{{ course.id }}" >{{ course.course_name}}</option>
-                                            {% endfor %} {% endcomment %}
-                                    </select>
-                            </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">Qualified Products</label>
-                                <input type="number" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">Nonqualified Products</label>
-                                <input type="number" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
+                            
+                        {% comment %} </div>
+                        <div class="row"> {% endcomment %}
+                            
+                           
                             <button class="btn btn-outline-info rounded-pill text-grey w-100 mt-3 mb-3"
                                         type="submit">
                                     Submit 

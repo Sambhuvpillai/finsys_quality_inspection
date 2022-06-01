@@ -32631,3 +32631,21 @@ def quality_inspection(request):
     return render(request,'app1/quality_inspection.html')
 def inspect_here(request):
     return render(request,'app1/inspect_here.html')
+
+# EDIT INSPECTION
+
+def edit_inspection_page(request):
+    return render(request,'app1/edit_page.html')
+# DELETE_INSPECTION
+# /////////////////////
+# quality management/quality certificate
+
+
+def create_certificate_page(request):
+    return render(request,'app1/create_certificate_page.html')
+def view_certificate_page(request):
+    return render(request,'app1/view_certificate_page.html')
+def edit_certificate_page(request):
+    return render(request,'app1/edit_certificate_page.html')
+    
+    

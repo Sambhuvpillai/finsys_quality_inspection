@@ -2,7 +2,81 @@
 {% block body %}
 {% load static %}
     <body>
-        <a class="nav-link" href="{% url 'inspect_here'%}"><i class="fa fa-th-list fa-fw mr-1"></i>Quality Inspect Here</a>{% comment %} {% url 'apply_leave'%} {% endcomment %}
+        {% comment %} <a class="nav-link" href="{% url 'inspect_here'%}"><i class="fa fa-th-list fa-fw mr-1"></i>Quality Inspect Here</a>{% url 'apply_leave'%} {% endcomment %}
+        <div class="page-content">
+            <div class="card radius-15">
+                <div class="card-body">
+                    <div class="card-title">
+                        <center><h2 class="mb-0">Quality Inspections</h2></center>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="card radius-15">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            <a class="" href="{% url 'inspect_here'%}">
+                                <button id="myBtn" class="btn btn-outline-info text-grey">Quality Inspect Here
+                                    
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <table class="table table-responsive-md mt-3">
+                        <thead>
+                        <tr>
+                            <th>NAME</th>
+                            <th>INSPECTION DATE</th>
+                            <th>SKU NUMBER</th>
+                            <th>PRODUCT NAME</th>
+                            <th>INSPECTED NUMBERS</th>
+                            <th>NONINSPECTED NUMBERS</th>
+                            <th>DEPARTMENT</th>
+                            <th>QUALIFIED PRODUCTS</th>
+                            <th>NONQUALIFIED PRODUCTS</th>
+                            <th>ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for invoices in invoice %}
+                            {% if invoices.cid_id == cmp1.cid %}
+    
+                                <tr>
+                                    <th>{{ invoices.invoiceno }}</th>
+                                    <td>{{ invoices.invoicedate }}</td>
+                                    <td>{{ invoices.customername }}</td>
+                                    <td>{{ invoices.email }}</td>
+                                    <td>{{ invoices.duedate }}</td>
+                                    <td>{{ invoices.grandtotal }}</td>
+                                    <td>{{ invoices.baldue }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-outline-info dropdown-toggle text-grey"
+                                                    data-toggle="dropdown">Actions
+                                            </button>
+                                            <div class="dropdown-menu" style="background-color: white;">
+                                                <a href="{% url 'inspect_here'%}" class="dropdown-item"
+                                                   style="color: black; font-size: 15px;"><i class="bx bx-edit"><b>EDIT</b></i></a>
+                                                <a href="#" class="dropdown-item"
+                                                   style="color: black; font-size: 15px;"><i
+                                                        class="bx bx-trash"><b>DELETE</b></i></a>
+                                                <a href="viewinvoice/{{ invoices.invoiceid }}" class="dropdown-item"
+                                                   style="color: black; font-size: 15px;"><i
+                                                        class="bx bxs-eyedropper"><b>VIEW</b></i></a>
+                                            </div>
+                                        </div>
+                                    </td>
+    
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+    
+    
+                    </table>
+                </div>
         <script src="" async defer></script>
     </body>
 {% endblock %}

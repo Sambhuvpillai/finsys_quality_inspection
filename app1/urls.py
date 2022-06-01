@@ -352,7 +352,15 @@ urlpatterns = [
     re_path(r'^cash_flow_sort$',views.cash_flow_sort,name='cash_flow_sort'),
     
     # sambhu v pillai
-    
+    # quality_inspection
     re_path('quality_inspection',views.quality_inspection,name='quality_inspection'),
     re_path('inspect_here',views.inspect_here,name='inspect_here'),
+    # edit qi
+    re_path('edit_inspection_page',views.edit_inspection_page,name='edit_inspection_page'),
+    # quality_certificate
+    re_path('create_certificate_page',views.create_certificate_page,name='create_certificate_page'),
+    re_path('view_certificate_page',views.view_certificate_page,name='view_certificate_page'),
+    # edit qc
+    re_path('edit_certificate_page',views.edit_certificate_page,name='edit_certificate_page'),
+    
 ]
