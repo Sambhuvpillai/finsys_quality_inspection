@@ -27,12 +27,12 @@
                     <table class="table table-responsive-md mt-3">
                         <thead>
                         <tr>
-                            <th>NAME</th>
                             <th>INSPECTION DATE</th>
                             <th>SKU NUMBER</th>
                             <th>PRODUCT NAME</th>
-                            <th>INSPECTED NUMBERS</th>
-                            <th>NONINSPECTED NUMBERS</th>
+                            <th>INSPECTED</th>
+                            <th>NONINSPECTED</th>
+                            <th>INSPECTED BY</th>
                             <th>DEPARTMENT</th>
                             <th>QUALIFIED PRODUCTS</th>
                             <th>NONQUALIFIED PRODUCTS</th>
@@ -40,17 +40,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for invoices in invoice %}
-                            {% if invoices.cid_id == cmp1.cid %}
+                        {% for insp in inspections %}
+                            {% comment %} {% if invoices.cid_id == cmp1.cid %} {% endcomment %}
     
                                 <tr>
-                                    <th>{{ invoices.invoiceno }}</th>
-                                    <td>{{ invoices.invoicedate }}</td>
-                                    <td>{{ invoices.customername }}</td>
-                                    <td>{{ invoices.email }}</td>
-                                    <td>{{ invoices.duedate }}</td>
-                                    <td>{{ invoices.grandtotal }}</td>
-                                    <td>{{ invoices.baldue }}</td>
+                                    <th>{{ insp.date }}</th>
+                                    <td>{{ insp.name }}</td>
+                                    <td>{{ insp.inspected_no }}</td>
+                                    <td>{{ insp.noninspected_no }}</td>
+                                    <td>{{ insp.inspected_by }}</td>
+                                    <td>{{ insp.employee. }}</td>
+                                    <td>{{ insp.qualified_products }}</td>
+                                    <td>{{ insp.nonqualified_products }}</td>
                                     <td>
                                         <div class="dropdown">
                                             <button type="button" class="btn btn-outline-info dropdown-toggle text-grey"
@@ -70,7 +71,7 @@
                                     </td>
     
                                 </tr>
-                            {% endif %}
+                            {% comment %} {% endif %} {% endcomment %}
                         {% endfor %}
                         </tbody>
     

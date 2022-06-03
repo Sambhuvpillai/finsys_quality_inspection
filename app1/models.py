@@ -991,7 +991,10 @@ class employee(models.Model):
     deducamt2 = models.CharField(max_length=100, default='')
     deducamt3 = models.CharField(max_length=100, default='')
     deducamt4 = models.CharField(max_length=100, default='')
-
+    
+def _str_(self):
+    return self.name
+    
 
 class payslip(models.Model):
     payslipid = models.AutoField(('PAYSLIPID'), primary_key=True)
@@ -1084,17 +1087,18 @@ class customize(models.Model):
     lastedited = models.CharField(default=timezone.now, max_length=255, blank=True)
     selected = models.CharField(max_length=255, default='', blank=True)
     
-class quality_inspection(models.Model):
-    employee = models.ForeignKey(employee, on_delete=models.CASCADE)
-    # inventory_sku = models.ForeignKey(inventory, on_delete=models.CASCADE)
-    # noninventory_sku = models.ForeignKey(noninventory, on_delete=models.CASCADE)
-    date = models.DateField()
-    sku_no = models.CharField(max_length=90)
-    product = models.CharField(max_length=90)
-    inspected_no = models.IntegerField()
-    noninspected_no = models.IntegerField()
-    inspected_by = models.CharField(max_length=90)
-    qualified_products = models.IntegerField()
-    nonqualified_products = models.IntegerField()
+# class quality_inspection(models.Model):
+#     date = models.DateField(null=True,blank=True)
+#     p_name = models.CharField(max_length=90, blank=True)
+#     department = models.CharField(max_length=90, blank=True)
+#     inspected_no = models.IntegerField( null=True,blank=True)
+#     noninspected_no = models.IntegerField(null=True,blank=True)
+#     inspected_by = models.CharField(max_length=90,null=True,blank=True)
+#     qualified_products = models.IntegerField(null=True,blank=True)
+#     nonqualified_products = models.IntegerField(null=True,blank=True)
+    
+#     def _str_(self):
+#         return self.date
+    
     
     

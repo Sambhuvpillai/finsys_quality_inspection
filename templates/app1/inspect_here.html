@@ -15,73 +15,79 @@
             <div class="card-body">
                 
                 <hr/>
-                <form action="#" method="post" class="needs-validation" novalidate>
+                <form action="quality_inspect" method="post" class="needs-validation" >
                     {% csrf_token %}
                     {% comment %} {% if user.is_authenticated %} {% endcomment %}
                         <div class="row">
                             
-                            <div class="col-md-4 mt-3">
-                                <label>Name</label>
-                                <input type="text" class="form-control" id="" name=""
+                            <div class="col-md-6 mt-3">
+                                <label>Date</label>
+                                <input type="date" class="form-control" id="" name="tdate"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
+                                
                             </div>
 
-                            <div class="col-md-4 mt-3">
-                                <label>Inspection Date</label>
-                                <input type="date" class="form-control" id="" name=""
+                            <div class="col-md-6 mt-3">
+                                <label>Product Name</label>
+                                {% comment %} <input type="text" class="form-control" id="" name="name"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div> {% endcomment %}
+                                <select class="form-control" name="name">
+                                    {% for i in obj %}
+                                    <option value="none" selected disabled hidden>Select an Product</option>
+                                    <option value="{{ i }}" >{{ i }}</option>
+                                    {% endfor %}
+                                    
+                                </select>
+                                
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Inspected</label>
+                                <input type="text" class="form-control" id="" name="insp_quan"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">SKU Number</label>
-                                <input type="text" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            <div class="col-md-4 mt-3"></div>
                             
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">Product name</label>
-                                <input type="text" class="form-control" id="" name=""
+                            
+                        {% comment %} </div>
+                        <div class="row"> {% endcomment %}
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Noninspected</label>
+                                <input type="text" class="form-control" id="" name="noninsp_quan"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-4 mt-3">
+                            <div class="col-md-6 mt-3">
                                 <div id="hello">
-                                    <label for="validationCustom03">Inspected Numbers</label>
-                                <input type="number" class="form-control" id="" name=""
+                                    <label for="validationCustom03">Inspected By</label>
+                                <input type="text" class="form-control" id="" name="insp_by"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">NonInspected Numbers</label>
-                                <input type="number" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 mt-3">
+                            
+                        {% comment %} </div>
+                        <div class="row"> {% endcomment %}
+                            <div class="col-md-6 mt-3">
                                 <lebel for="course">Select you department</lebel>
-                                    <select class="form-control" name="sel">
-                                            {% comment %} {% for course in courses %}
-                                            <option value="{{ course.id }}" >{{ course.course_name}}</option>
-                                            {% endfor %} {% endcomment %}
-                                    </select>
+                                <select class="form-control" name="depart">
+                                    {% for m in max %}
+                                    <option value="none" selected disabled hidden>Select an department</option>
+                                    <option value="{{ m }}" >{{ m }}</option>
+                                    {% endfor %}
+                                    
+                                </select>
                             </div>
-                            <div class="col-md-4 mt-3">
+                            <div class="col-md-6 mt-3">
                                 <label for="validationCustom03">Qualified Products</label>
-                                <input type="number" class="form-control" id="" name=""
+                                <input type="number" class="form-control" id="" name="qualified"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-4 mt-3">
+                            <div class="col-md-6 mt-3">
                                 <label for="validationCustom03">Nonqualified Products</label>
-                                <input type="number" class="form-control" id="" name=""
+                                <input type="number" class="form-control" id="" name="non_qualified"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>

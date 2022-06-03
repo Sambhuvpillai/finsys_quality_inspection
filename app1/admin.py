@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(ProductModel)
 admin.site.register(ItemModel)
 admin.site.register(sign)
+# admin.site.register(quality_inspection)

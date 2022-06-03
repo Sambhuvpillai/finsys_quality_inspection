@@ -6,6 +6,7 @@ from .models import advancepayment, paydowncreditcard, salesrecpts, timeact, tim
     bills, invoice, expences, payment, credit, delayedcharge, estimate, service, noninventory, bundle, employee, \
     payslip, inventory, customer, supplier, company, accounts, ProductModel, ItemModel, accountype, \
     expenseaccount, incomeaccount, accounts1, recon1, recordpay, addtax1, bankstatement, customize
+# from .models import quality_inspection
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
 from django.db.models import Sum, Q
@@ -14,6 +15,7 @@ import json
 from django.http.response import JsonResponse
 from django.contrib.auth.decorators import login_required
 import itertools
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -32628,24 +32630,96 @@ def cash_flow_sort(request):
 # quality management/quality inspection
     
 def quality_inspection(request):
+    # inspections = quality_inspection.objects.all()
+    # context = {'inspections':inspections}
     return render(request,'app1/quality_inspection.html')
 def inspect_here(request):
-    return render(request,'app1/inspect_here.html')
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+        # print("i.name")
+    for j in var2:
+        ls.append(j.name)
+    print(ls)
+    # toda = date.today()
+    # s1 = toda.strftime("%Y-%m-%d")
+    ks=[]
+    var3=employee.objects.all()
+    for k in var3:
+        ks.append(k.department)
+        print(ks)
+        
+    context={
+        'max':ks,
+        'obj':ls,
+        
+    }
+    return render(request,'app1/inspect_here.html',context)
+@csrf_exempt
+def quality_inspect(request):
+    
+    if request.method =='POST':
+        tdate=request.POST.get('tdate')
+        name=request.POST.get('name')
+        depart = request.POST.get('depart')
+        
+        insp_quan=request.POST.get('insp_quan')
+        noninsp_quan=request.POST.get('noninsp_quan')
+        insp_by=request.POST.get('insp_by')
+        
+        qualified=request.POST.get('qualified')
+        non_qualified=request.POST.get('non_qualified')
+        
+        
+       
+        inspection = quality_inspection(date_t=tdate,
+                                        p_name=name,
+                                        inspected_no=insp_quan,
+                                        noninspected_no=noninsp_quan,
+                                        inspected_by=insp_by,
+                                        qualified_products=qualified,
+                                        nonqualified_products=non_qualified,
+                                        department=depart
+                                        )
+        inspection.save()
+        return render(request,'app1/quality_inspection.html')
+    else:
+        return render(request,'app1/inspect_here.html')
+
+# def quality_inspect(request):
+#     ls=[]
+#     var1=noninventory.objects.all() 
+#     var2=inventory.objects.all()
+#     for i in var1:
+#         ls.append(i.name)
+#         print("i.name")
+#     for j in var2:
+#         ls.append(j.name)
+#     print(ls)
+#     toda = date.today()
+#     s1 = toda.strftime("%Y-%m-%d")
+#     context={
+#         'max':s1,
+#         'obj':ls,      
+#     }   
+#     return render(request,'app1/inspect_here.html',context) 
 
 # EDIT INSPECTION
 
-def edit_inspection_page(request):
-    return render(request,'app1/edit_page.html')
+# def edit_inspection_page(request):
+#     return render(request,'app1/edit_page.html')
 # DELETE_INSPECTION
 # /////////////////////
 # quality management/quality certificate
 
 
-def create_certificate_page(request):
-    return render(request,'app1/create_certificate_page.html')
-def view_certificate_page(request):
-    return render(request,'app1/view_certificate_page.html')
-def edit_certificate_page(request):
-    return render(request,'app1/edit_certificate_page.html')
+# def create_certificate_page(request):
+#     return render(request,'app1/create_certificate_page.html')
+# def view_certificate_page(request):
+#     return render(request,'app1/view_certificate_page.html')
+# def edit_certificate_page(request):
+#     return render(request,'app1/edit_certificate_page.html')
     
     
