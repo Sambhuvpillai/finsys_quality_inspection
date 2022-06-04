@@ -45,11 +45,12 @@
     
                                 <tr>
                                     <th>{{ insp.date }}</th>
-                                    <td>{{ insp.name }}</td>
+                                    <td>{{ insp.sku }}</td>
+                                    <td>{{ insp.p_name }}</td>
                                     <td>{{ insp.inspected_no }}</td>
                                     <td>{{ insp.noninspected_no }}</td>
                                     <td>{{ insp.inspected_by }}</td>
-                                    <td>{{ insp.employee. }}</td>
+                                    <td>{{ insp.department }}</td>
                                     <td>{{ insp.qualified_products }}</td>
                                     <td>{{ insp.nonqualified_products }}</td>
                                     <td>
@@ -58,14 +59,12 @@
                                                     data-toggle="dropdown">Actions
                                             </button>
                                             <div class="dropdown-menu" style="background-color: white;">
-                                                <a href="{% url 'inspect_here'%}" class="dropdown-item"
+                                                <a href="{% url 'edit_inspection_page' insp.id  %}" class="dropdown-item"
                                                    style="color: black; font-size: 15px;"><i class="bx bx-edit"><b>EDIT</b></i></a>
-                                                <a href="#" class="dropdown-item"
+                                                <a href="{% url 'delete_inspection' insp.id  %}" class="dropdown-item"
                                                    style="color: black; font-size: 15px;"><i
                                                         class="bx bx-trash"><b>DELETE</b></i></a>
-                                                <a href="viewinvoice/{{ invoices.invoiceid }}" class="dropdown-item"
-                                                   style="color: black; font-size: 15px;"><i
-                                                        class="bx bxs-eyedropper"><b>VIEW</b></i></a>
+                                                
                                             </div>
                                         </div>
                                     </td>

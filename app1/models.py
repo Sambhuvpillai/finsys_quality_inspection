@@ -1087,18 +1087,19 @@ class customize(models.Model):
     lastedited = models.CharField(default=timezone.now, max_length=255, blank=True)
     selected = models.CharField(max_length=255, default='', blank=True)
     
-# class quality_inspection(models.Model):
-#     date = models.DateField(null=True,blank=True)
-#     p_name = models.CharField(max_length=90, blank=True)
-#     department = models.CharField(max_length=90, blank=True)
-#     inspected_no = models.IntegerField( null=True,blank=True)
-#     noninspected_no = models.IntegerField(null=True,blank=True)
-#     inspected_by = models.CharField(max_length=90,null=True,blank=True)
-#     qualified_products = models.IntegerField(null=True,blank=True)
-#     nonqualified_products = models.IntegerField(null=True,blank=True)
+class quality_inspection(models.Model):
+    date = models.DateField(null=True,blank=True)
+    p_name = models.CharField(max_length=90, blank=True)
+    department = models.CharField(max_length=90, blank=True)
+    inspected_no = models.IntegerField( null=True,blank=True)
+    noninspected_no = models.IntegerField(null=True,blank=True)
+    inspected_by = models.CharField(max_length=90,null=True,blank=True)
+    qualified_products = models.IntegerField(null=True,blank=True)
+    nonqualified_products = models.IntegerField(null=True,blank=True)
+    sku = models.CharField(max_length=90,null=True,blank=True)
     
-#     def _str_(self):
-#         return self.date
+    # def _str_(self):
+    #     return self.date
     
     
     

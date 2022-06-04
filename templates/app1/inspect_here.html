@@ -22,7 +22,7 @@
                             
                             <div class="col-md-6 mt-3">
                                 <label>Date</label>
-                                <input type="date" class="form-control" id="" name="tdate"
+                                <input type="date" class="form-control"  name="date"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                                 
@@ -33,7 +33,7 @@
                                 {% comment %} <input type="text" class="form-control" id="" name="name"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div> {% endcomment %}
-                                <select class="form-control" name="name">
+                                <select class="form-control" name="p_name">
                                     {% for i in obj %}
                                     <option value="none" selected disabled hidden>Select an Product</option>
                                     <option value="{{ i }}" >{{ i }}</option>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="validationCustom03">Inspected</label>
-                                <input type="text" class="form-control" id="" name="insp_quan"
+                                <input type="text" class="form-control"  name="inspected_no"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
@@ -54,14 +54,14 @@
                         <div class="row"> {% endcomment %}
                             <div class="col-md-6 mt-3">
                                 <label for="validationCustom03">Noninspected</label>
-                                <input type="text" class="form-control" id="" name="noninsp_quan"
+                                <input type="text" class="form-control" name="noninspected_no"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div id="hello">
                                     <label for="validationCustom03">Inspected By</label>
-                                <input type="text" class="form-control" id="" name="insp_by"
+                                <input type="text" class="form-control"  name="inspected_by"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                                 </div>
@@ -71,7 +71,7 @@
                         <div class="row"> {% endcomment %}
                             <div class="col-md-6 mt-3">
                                 <lebel for="course">Select you department</lebel>
-                                <select class="form-control" name="depart">
+                                <select class="form-control" name="department">
                                     {% for m in max %}
                                     <option value="none" selected disabled hidden>Select an department</option>
                                     <option value="{{ m }}" >{{ m }}</option>
@@ -81,13 +81,13 @@
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="validationCustom03">Qualified Products</label>
-                                <input type="number" class="form-control" id="" name="qualified"
+                                <input type="number" class="form-control" name="qualified_products"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="validationCustom03">Nonqualified Products</label>
-                                <input type="number" class="form-control" id="" name="non_qualified"
+                                <input type="number" class="form-control"  name="nonqualified_products"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>

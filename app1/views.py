@@ -2,10 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from datetime import datetime, date, timedelta
-from .models import advancepayment, paydowncreditcard, salesrecpts, timeact, timeactsale, Cheqs, suplrcredit, addac, \
-    bills, invoice, expences, payment, credit, delayedcharge, estimate, service, noninventory, bundle, employee, \
-    payslip, inventory, customer, supplier, company, accounts, ProductModel, ItemModel, accountype, \
-    expenseaccount, incomeaccount, accounts1, recon1, recordpay, addtax1, bankstatement, customize
+from .models import *
 # from .models import quality_inspection
 from django.contrib.auth.models import auth, User
 from django.contrib import messages
@@ -32629,10 +32626,11 @@ def cash_flow_sort(request):
     
 # quality management/quality inspection
     
-def quality_inspection(request):
-    # inspections = quality_inspection.objects.all()
-    # context = {'inspections':inspections}
-    return render(request,'app1/quality_inspection.html')
+def quality_inspection_table(request):
+    inspections = quality_inspection.objects.all()
+    context = {'inspections':inspections}
+    return render(request,'app1/quality_inspection.html',context)
+    
 def inspect_here(request):
     ls=[]
     var1=noninventory.objects.all() 
@@ -32661,57 +32659,136 @@ def inspect_here(request):
 def quality_inspect(request):
     
     if request.method =='POST':
-        tdate=request.POST.get('tdate')
-        name=request.POST.get('name')
-        depart = request.POST.get('depart')
+        tdate=request.POST.get('date')
+        name=request.POST.get('p_name')
+        depart = request.POST.get('department')
         
-        insp_quan=request.POST.get('insp_quan')
-        noninsp_quan=request.POST.get('noninsp_quan')
-        insp_by=request.POST.get('insp_by')
+        insp_quan=request.POST.get('inspected_no')
+        noninsp_quan=request.POST.get('noninspected_no')
+        insp_by=request.POST.get('inspected_by')
         
-        qualified=request.POST.get('qualified')
-        non_qualified=request.POST.get('non_qualified')
+        qualified=request.POST.get('qualified_products')
+        non_qualified=request.POST.get('nonqualified_products')
         
         
-       
-        inspection = quality_inspection(date_t=tdate,
-                                        p_name=name,
-                                        inspected_no=insp_quan,
-                                        noninspected_no=noninsp_quan,
-                                        inspected_by=insp_by,
-                                        qualified_products=qualified,
-                                        nonqualified_products=non_qualified,
-                                        department=depart
-                                        )
-        inspection.save()
-        return render(request,'app1/quality_inspection.html')
+
+        
+        try:
+            var1=noninventory.objects.get(name=name)
+            # print('noninventery'+str(var1.sku))
+            print(var1.sku)
+            sk=(var1.sku)
+            
+            
+        except:
+            print('not in non invo')
+            # pass
+        try:
+            var2=inventory.objects.get(name=name)
+            # print('invetery'+str(var1.sku))
+            print(var2.sku)
+            sk=(var2.sku)
+        except:
+            print('not in invontry ')
+                # messages.info(
+                #     request, 'Data Not Valid')
+                
+            # print(pro_name)
+            print(sk)
+        inspect = quality_inspection(date=tdate,
+                                    p_name=name,
+                                    inspected_no=insp_quan,
+                                    noninspected_no=noninsp_quan,
+                                    inspected_by=insp_by,
+                                    qualified_products=qualified,
+                                    nonqualified_products=non_qualified,
+                                    department=depart,
+                                    sku = sk
+                                    )
+        inspect.save()
+        print("save")
+        return redirect('quality_inspection_table')
     else:
         return render(request,'app1/inspect_here.html')
+    
 
-# def quality_inspect(request):
-#     ls=[]
-#     var1=noninventory.objects.all() 
-#     var2=inventory.objects.all()
-#     for i in var1:
-#         ls.append(i.name)
-#         print("i.name")
-#     for j in var2:
-#         ls.append(j.name)
-#     print(ls)
-#     toda = date.today()
-#     s1 = toda.strftime("%Y-%m-%d")
-#     context={
-#         'max':s1,
-#         'obj':ls,      
-#     }   
-#     return render(request,'app1/inspect_here.html',context) 
+
 
 # EDIT INSPECTION
 
-# def edit_inspection_page(request):
-#     return render(request,'app1/edit_page.html')
+def edit_inspection_page(request,id):
+    inspections=quality_inspection.objects.get(id=id)
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+        # print("i.name")
+    for j in var2:
+        ls.append(j.name)
+    print(ls)
+    # toda = date.today()
+    # s1 = toda.strftime("%Y-%m-%d")
+    ks=[]
+    var3=employee.objects.all()
+    for k in var3:
+        ks.append(k.department)
+        print(ks)
+        
+    context={
+        'max':ks,
+        'obj':ls,
+        'inspections':inspections
+        
+    }
+    
+    return render(request,'app1/edit_page.html',context)
+def edit_quality_inspect(request,id):
+    if request.method=='POST':
+        try:
+            var1=noninventory.objects.get(name=p_name)
+            # print('noninventery'+str(var1.sku))
+            print(var1.sku)
+            sk=(var1.sku)
+            
+            
+        except:
+            print('not in non invo')
+            # pass
+        try:
+            var2=inventory.objects.get(name=p_name)
+            # print('invetery'+str(var1.sku))
+            print(var2.sku)
+            sk=(var2.sku)
+        except:
+            print('not in invontry ')
+                # messages.info(
+                #     request, 'Data Not Valid')
+                
+            # print(pro_name)
+            print(sk)
+        inspect = quality_inspection.objects.get(id=id)
+        inspect.tdate=request.POST.get('date')
+        inspect.p_name=request.POST.get('p_name')
+        inspect.department = request.POST.get('department')
+        
+        inspect.inspected_no=request.POST.get('inspected_no')
+        inspect.noninspected_no=request.POST.get('noninspected_no')
+        inspect.inspected_by=request.POST.get('inspected_by')
+        
+        inspect.qualified_products=request.POST.get('qualified_products')
+        inspect.nonqualified_products=request.POST.get('nonqualified_products')
+        inspect.sku=request.POST.get('sku')
+
+        inspect.save()
+        print("save")
+        return redirect('quality_inspection_table')
+    return redirect('edit_inspection_page')
 # DELETE_INSPECTION
-# /////////////////////
+def delete_inspection(request,id):
+    inspect = quality_inspection.objects.get(id=id)
+    inspect.delete()
+    return redirect('quality_inspection_table')
 # quality management/quality certificate
 
 
