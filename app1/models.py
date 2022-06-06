@@ -1100,6 +1100,14 @@ class quality_inspection(models.Model):
     
     # def _str_(self):
     #     return self.date
+
+class quality_certificate(models.Model):
+    qc_date = models.DateField()
+    qc_pname = models.CharField(max_length=90, blank=True)
+    qc_sku = models.CharField(max_length=90, blank=True)
+    qc_custumername = models.CharField(max_length=90, blank=True)
+    qc_inspdate = models.CharField(max_length=90, blank=True)
+    
     
     
     

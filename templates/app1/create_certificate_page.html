@@ -14,56 +14,48 @@
         <div class="card radius-15" style="background-color: #243e54;">
             <div class="card-body">
             </button>
-            <a class="" href="{% url 'view_certificate_page'%}">
+             <a class="" href="{% url 'view_certificate_page' %}"> 
                 <button id="myBtn" class="btn btn-outline-info text-grey">view certificate
                     
                 </button>
                 
                 <hr/>
-                <form action="#" method="post" class="needs-validation" novalidate>
+                <form action="create_certificate" method="post" class="needs-validation" novalidate>
                     {% csrf_token %}
                     {% comment %} {% if user.is_authenticated %} {% endcomment %}
                         <div class="row">
-                            <div class="col-md-4 mt-3">
+                            <div class="col-md-6 mt-3">
                                 <label> Date</label>
-                                <input type="date" class="form-control" id="" name=""
+                                <input type="date" class="form-control" id="" name="date"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                             
-                            <div class="col-md-4 mt-3">
-                                <label>Name</label>
-                                <input type="text" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
+                            <div class="col-md-6 mt-3">
+                                <label>Product Name</label>
+                                <select class="form-control" name="pname">
+                                    {% for i in obj %}
+                                    <option value="none" selected disabled hidden>Select an Product</option>
+                                    <option value="{{ i }}" >{{ i }}</option>
+                                    {% endfor %}
+                                    
+                                </select>
                             </div>
 
-                            <div class="col-md-4 mt-3">
-                                <label>Inspection Date</label>
-                                <input type="date" class="form-control" id="" name=""
+                            <div class="col-md-6 mt-3">
+                                <label>Custumer Name</label>
+                                <input type="text" class="form-control" id="" name="cusname"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">SKU Number</label>
-                                <input type="text" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            
-                            
-                        
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">Product name</label>
-                                <input type="text" class="form-control" id="" name=""
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Inspection Date</label>
+                                <input type="date" class="form-control" id="" name="inspdate"
                                        required style="background-color: #2f516f;color: white;">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                             
-                       
-                        
-                            
-                           
+                         
                             <button class="btn btn-outline-info rounded-pill text-grey w-100 mt-3 mb-3"
                                         type="submit">
                                     Submit 

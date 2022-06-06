@@ -357,13 +357,14 @@ urlpatterns = [
     re_path('inspect_here',views.inspect_here,name='inspect_here'),
     re_path('quality_inspect',views.quality_inspect,name='quality_inspect'),
     # edit qi
-    # re_path('edit_inspection_page/<int:pk>',views.edit_inspection_page,name='edit_inspection_page'),
     re_path(r'^edit_inspection_page/(?P<id>\d+)$', views.edit_inspection_page, name='edit_inspection_page'),
-    re_path(r'^edit_quality_inspect/(?P<id>\d+)$', views.edit_quality_inspect, name='edit_quality_inspect'),
+    
     re_path(r'^delete_inspection/(?P<id>\d+)$', views.delete_inspection, name='delete_inspection'),
     # quality_certificate
-    # re_path('create_certificate_page',views.create_certificate_page,name='create_certificate_page'),
-    # re_path('view_certificate_page',views.view_certificate_page,name='view_certificate_page'),
+    re_path('create_certificate_page',views.create_certificate_page,name='create_certificate_page'),
+    re_path('create_certificate',views.create_certificate,name='create_certificate'),
+    re_path('view_certificate_page',views.view_certificate_page,name='view_certificate_page'),
+    re_path(r'^qual_certi/(?P<id>\d+)$', views.qual_certi, name='qual_certi'),
     # edit qc
     # re_path('edit_certificate_page',views.edit_certificate_page,name='edit_certificate_page'),
     

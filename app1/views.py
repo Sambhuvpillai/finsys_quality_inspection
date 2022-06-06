@@ -32655,7 +32655,7 @@ def inspect_here(request):
         
     }
     return render(request,'app1/inspect_here.html',context)
-@csrf_exempt
+
 def quality_inspect(request):
     
     if request.method =='POST':
@@ -32717,7 +32717,44 @@ def quality_inspect(request):
 # EDIT INSPECTION
 
 def edit_inspection_page(request,id):
+    if request.method=='POST':
+        inspection = quality_inspection.objects.get(id=id)
+    
+        inspection.date=request.POST.get('date')
+        p_name=request.POST.get('p_name')
+        inspection.department = request.POST.get('department')
+        inspection.inspected_no=request.POST.get('inspected_no')
+        inspection.noninspected_no=request.POST.get('noninspected_no')
+        inspection.inspected_by=request.POST.get('inspected_by')
+        inspection.qualified_products=request.POST.get('qualified_products')
+        inspection.nonqualified_products=request.POST.get('nonqualified_products')
+        print(p_name)
+        try:
+            var1=noninventory.objects.get(name=p_name)
+            # print('noninventery'+str(var1.sku))
+            print(var1.sku)
+            sk=(var1.sku) 
+                     
+        except:
+           print('not in non invo')
+           
+            # pass
+        try:
+            var2=inventory.objects.get(name=p_name)
+            print(var2.sku)
+            sk=(var2.sku)
+            
+        except:
+            print('not in invontry ')       
+            # print(pro_name)
+            
+        inspection.sku=sk
+        inspection.p_name=p_name
+        print(sk)
+        inspection.save()
+        return redirect('quality_inspection_table')
     inspections=quality_inspection.objects.get(id=id)
+    print(id)
     ls=[]
     var1=noninventory.objects.all() 
     var2=inventory.objects.all()
@@ -32743,10 +32780,81 @@ def edit_inspection_page(request,id):
     }
     
     return render(request,'app1/edit_page.html',context)
-def edit_quality_inspect(request,id):
-    if request.method=='POST':
+# def qi_page(request, id):
+#     if request.method=='POST':
+#         inspect = quality_inspection.objects.get(id=id)
+#         print(id)
+#         inspect.tdate=request.POST.get('date')
+#         inspect.p_name=request.POST.get('p_name')
+#         inspect.department = request.POST.get('department')
+#         inspect.inspected_no=request.POST.get('inspected_no')
+#         inspect.noninspected_no=request.POST.get('noninspected_no')
+#         inspect.inspected_by=request.POST.get('inspected_by')
+#         inspect.qualified_products=request.POST.get('qualified_products')
+#         inspect.nonqualified_products=request.POST.get('nonqualified_products')
+# #         try:
+# #             var1=noninventory.objects.get(name=p_name)
+# #             # print('noninventery'+str(var1.sku))
+# #             print(var1.sku)
+# #             sk=(var1.sku)
+            
+            
+# #         except:
+# #             print('not in non invo')
+# #             # pass
+# #         try:
+# #             var2=inventory.objects.get(name=p_name)
+# #             # print('invetery'+str(var1.sku))
+# #             print(var2.sku)
+# #             sk=(var2.sku)
+# #         except:
+# #             print('not in invontry ')
+# #                 # messages.info(
+# #                 #     request, 'Data Not Valid')
+                
+# #             # print(pro_name)
+# #             print(sk)
+# #         inspect.sku=request.POST.get('sku')
+# #         print(id)
+
+#         inspect.save()
+#         print("save")
+#         return redirect('quality_inspection_table')
+#     return redirect('edit_inspection_page')
+# def edit_quality_inspection(request,pk):
+    
+        
+#     return redirect('edit_inspection_page')
+# DELETE_INSPECTION
+def delete_inspection(request,id):
+    inspect = quality_inspection.objects.get(id=id)
+    inspect.delete()
+    return redirect('quality_inspection_table')
+# quality management/quality certificate
+
+
+def create_certificate_page(request):
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+        # print("i.name")
+    for j in var2:
+        ls.append(j.name)
+    print(ls)
+    # toda = date.today()
+    # s1 = toda.strftime("%Y-%m-%d")
+    context={'obj':ls}
+    return render(request,'app1/create_certificate_page.html',context)
+def create_certificate(request):
+    if request.method =='POST':
+        date=request.POST.get('date')
+        pname=request.POST.get('pname')
+        cusname=request.POST.get('cusname')
+        inspdate=request.POST.get('inspdate')
         try:
-            var1=noninventory.objects.get(name=p_name)
+            var1=noninventory.objects.get(name=pname)
             # print('noninventery'+str(var1.sku))
             print(var1.sku)
             sk=(var1.sku)
@@ -32756,7 +32864,7 @@ def edit_quality_inspect(request,id):
             print('not in non invo')
             # pass
         try:
-            var2=inventory.objects.get(name=p_name)
+            var2=inventory.objects.get(name=pname)
             # print('invetery'+str(var1.sku))
             print(var2.sku)
             sk=(var2.sku)
@@ -32767,35 +32875,27 @@ def edit_quality_inspect(request,id):
                 
             # print(pro_name)
             print(sk)
-        inspect = quality_inspection.objects.get(id=id)
-        inspect.tdate=request.POST.get('date')
-        inspect.p_name=request.POST.get('p_name')
-        inspect.department = request.POST.get('department')
+        certificate=quality_certificate(qc_date=date,
+                                        qc_pname=pname,
+                                        qc_custumername=cusname,
+                                        qc_inspdate=inspdate,
+                                        qc_sku=sk)
         
-        inspect.inspected_no=request.POST.get('inspected_no')
-        inspect.noninspected_no=request.POST.get('noninspected_no')
-        inspect.inspected_by=request.POST.get('inspected_by')
-        
-        inspect.qualified_products=request.POST.get('qualified_products')
-        inspect.nonqualified_products=request.POST.get('nonqualified_products')
-        inspect.sku=request.POST.get('sku')
+        certificate.save()
+        print("saved qc")
+        return redirect('view_certificate_page')
+    else:
+        return render(request,'app1/create_certificate_page.html')
 
-        inspect.save()
-        print("save")
-        return redirect('quality_inspection_table')
-    return redirect('edit_inspection_page')
-# DELETE_INSPECTION
-def delete_inspection(request,id):
-    inspect = quality_inspection.objects.get(id=id)
-    inspect.delete()
-    return redirect('quality_inspection_table')
-# quality management/quality certificate
+def view_certificate_page(request):
+    certificate = quality_certificate.objects.all()
+    context={'certificate':certificate}
+    return render(request,'app1/quality_certificates.html',context)
+def qual_certi(request,id):
+    certificate = quality_certificate.objects.get(id=id)
+    context={'certificate':certificate}
+    return render(request,'app1/view_certificate_page.html',context)
 
-
-# def create_certificate_page(request):
-#     return render(request,'app1/create_certificate_page.html')
-# def view_certificate_page(request):
-#     return render(request,'app1/view_certificate_page.html')
 # def edit_certificate_page(request):
 #     return render(request,'app1/edit_certificate_page.html')
     

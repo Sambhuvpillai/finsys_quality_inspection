@@ -15,12 +15,14 @@
             <div class="card-body">
                 
                 <hr/>
-                <form action="edit_quality_inspect {{ inspect.id }}" method="post" class="needs-validation" >
+                <form action="{% url 'edit_inspection_page' inspections.id %}" method="post" class="needs-validation" >
                     {% csrf_token %}
                     {% comment %} {% if user.is_authenticated %} {% endcomment %}
                         <div class="row">
                             
                             <div class="col-md-6 mt-3">
+                               
+
                                 <label>Date</label>
                                 <input type="date" class="form-control"  name="date" value="{{ inspections.date }}"
                                        required style="background-color: #2f516f;color: white;">
