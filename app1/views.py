@@ -32896,7 +32896,62 @@ def qual_certi(request,id):
     context={'certificate':certificate}
     return render(request,'app1/view_certificate_page.html',context)
 
-# def edit_certificate_page(request):
-#     return render(request,'app1/edit_certificate_page.html')
+
+def edit_certificate_page(request,id):
+     if request.method=='POST':
+        certificate = quality_certificate.objects.get(id=id)
+    
+        
+        certificate.qc_date=request.POST.get('qc_date')
+        qc_pname=request.POST.get('qc_pname')
+        certificate.qc_inspdate=request.POST.get('qc_inspdate')
+        certificate.qc_custumername=request.POST.get('qc_custumername')
+        # print(p_name)
+        try:
+            var1=noninventory.objects.get(name=qc_pname)
+            # print('noninventery'+str(var1.sku))
+            print(var1.sku)
+            sk=(var1.sku) 
+                     
+        except:
+           print('not in non invo')
+           
+            # pass
+        try:
+            var2=inventory.objects.get(name=qc_pname)
+            print(var2.sku)
+            sk=(var2.sku)
+            
+        except:
+            print('not in invontry ')       
+            # print(pro_name)
+            
+        certificate.qc_sku=sk
+        certificate.qc_pname=qc_pname
+        print(sk)
+        certificate.save()
+        return redirect('view_certificate_page')
+     certificate=quality_certificate.objects.get(id=id)
+     ls=[]
+     var1=noninventory.objects.all() 
+     var2=inventory.objects.all()
+     for i in var1:
+        ls.append(i.name)
+        # print("i.name")
+     for j in var2:
+        ls.append(j.name)
+     print(ls)
+    # toda = date.today()
+    # s1 = toda.strftime("%Y-%m-%d")
+    # context={'obj':ls}
+     context={'certificate':certificate,'obj':ls}
+     return render(request,'app1/edit_certificate_page.html',context)
+ 
+def delete_certificate(request,id):
+    certificate = quality_certificate.objects.get(id=id)
+    certificate.delete()
+    return redirect('view_certificate_page')
+     
+     
     
     

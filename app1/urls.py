@@ -366,6 +366,8 @@ urlpatterns = [
     re_path('view_certificate_page',views.view_certificate_page,name='view_certificate_page'),
     re_path(r'^qual_certi/(?P<id>\d+)$', views.qual_certi, name='qual_certi'),
     # edit qc
+    re_path(r'^edit_certificate_page/(?P<id>\d+)$', views.edit_certificate_page, name='edit_certificate_page'),
+    re_path(r'^delete_certificate/(?P<id>\d+)$', views.delete_certificate, name='delete_certificate'),
     # re_path('edit_certificate_page',views.edit_certificate_page,name='edit_certificate_page'),
     
 ]

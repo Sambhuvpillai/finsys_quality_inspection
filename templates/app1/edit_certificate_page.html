@@ -15,53 +15,47 @@
             <div class="card-body">
                 
                 <hr/>
-                <form action="#" method="post" class="needs-validation" novalidate>
+                <form action="{% url 'edit_certificate_page' certificate.id %}" method="post" class="needs-validation" novalidate>
                     {% csrf_token %}
                     {% comment %} {% if user.is_authenticated %} {% endcomment %}
-                        <div class="row">
-                            <div class="col-md-4 mt-3">
-                                <label> Date</label>
-                                <input type="date" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            
-                            <div class="col-md-4 mt-3">
-                                <label>Name</label>
-                                <input type="text" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-
-                            <div class="col-md-4 mt-3">
-                                <label>Inspection Date</label>
-                                <input type="date" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">SKU Number</label>
-                                <input type="text" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            
-                            <div class="col-md-4 mt-3">
-                                <label for="validationCustom03">Product name</label>
-                                <input type="text" class="form-control" id="" name=""
-                                       required style="background-color: #2f516f;color: white;">
-                                <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            
-                        {% comment %} </div>
-                        <div class="row"> {% endcomment %}
-                            
-                           
-                            <button class="btn btn-outline-info rounded-pill text-grey w-100 mt-3 mb-3"
-                                        type="submit">
-                                    Submit 
-                                </button>
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <label> Date</label>
+                            <input type="date" class="form-control" value="{{ certificate.qc_date }}" name="qc_date"
+                                   required style="background-color: #2f516f;color: white;">
+                            <div class="valid-feedback">Looks good!</div>
                         </div>
+                        
+                        <div class="col-md-6 mt-3">
+                            <label>Product Name</label>
+                            <select class="form-control" name="qc_pname">
+                                {% for i in obj %}
+                                <option value="none" selected disabled hidden>Select an Product</option>
+                                <option value="{{ i }}" >{{ i }}</option>
+                                {% endfor %}
+                                
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mt-3">
+                            <label>Custumer Name</label>
+                            <input type="text" class="form-control" value="{{ certificate.qc_custumername }}" name="qc_custumername"
+                                   required style="background-color: #2f516f;color: white;">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label for="validationCustom03">Inspection Date</label>
+                            <input type="date" class="form-control" value="{{ certificate.qc_inspdate }}" name="qc_inspdate"
+                                   required style="background-color: #2f516f;color: white;">
+                            <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        
+                     
+                        <button class="btn btn-outline-info rounded-pill text-grey w-100 mt-3 mb-3"
+                                    type="submit">
+                                Submit 
+                            </button>
+                    </div>
                        
                 </form>
             </div>
