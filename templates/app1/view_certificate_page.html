@@ -14,27 +14,28 @@
         </div>
         <div class="card radius-15" style="background-color: #243e54;">
             <div class="card-body">
-                {% comment %} <a class="" href="#">
-                    <button id="myBtn" class="btn btn-outline-info text-grey">Download
+                {% comment %} <a href="" class="text-dark " onClick="return confirm('I Agreed all the Terms and Conditions ')">  {% endcomment %}
+                    <button id="download" class="btn btn-outline-info text-grey"  onClick="return confirm('ARE YOU SURE WANT TO DOWNLOAD IT ')">Download
                         
-                    </button></a> {% endcomment %}
-                    <a class="" href="{% url 'edit_certificate_page' certificate.id %}"> 
+                    </button>
+                    {% comment %} <a class="" href="{% url 'edit_certificate_page' certificate.id %}"> 
                         <button id="myBtn" class="btn btn-outline-info text-grey">Edit
                             
                         </button>
                         <a class="" href="{% url 'delete_certificate' certificate.id %}">
                             <button id="myBtn" class="btn btn-outline-info text-grey">Delete
                                 
-                            </button></a>
+                            </button></a> {% endcomment %}
                 
                 <hr/>
-                <div class="card radius-15 p-5" style="margin-bottom: 50px;">
-                    <div class="card-body">
+                <div class="card radius-15 p-5"  style="margin-bottom: 50px;">
+                    <div class="card-body" id="invoice">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="rectangle"
-                                     style=" overflow: scroll; background-color:rgba(255, 255, 255, 0.905);;;;width: 100%;height:2000px;border: 3px white;padding: 50px;">
-                                    <div class="rectangle"
+                                     style=" overflow: scroll; background-color:rgba(255, 255, 255, 0.905);;;;width: 100%;height:120vh;border: 3px white;padding: 50px;">
+                                    <h2 class="text-dark text-center">QUALITY CERTIFICATE</h2>
+                                     <div class="rectangle"
                                          style="background-image: linear-gradient(dodgerblue, black); width: 100%; height: 200px; margin-top: 20px;">
                                         <div class="img-container"
                                              style="width: 140px; height: 140px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50%; background-color: white; transform: translate(23%, 90%);">
@@ -43,9 +44,9 @@
                                         
                                     </div>
                                    
-                                    
-                                    <table class="table text-dark " style="position: absolute;left: 180px;top: 400px;width: 900px;color: black;
-                                    font-size: 22px; height:700px;">
+                                    <div class="col-md-12 my-5 ms-5 " style="">
+                                    <table class="table text-dark mt-4 bx-border-radius-3" style=" border:3px solid rgba(0, 0, 0, 0.144);position: absolute;left: 0px;top: 0px;width: 500px;color: black;
+                                    font-size: 13px; height:100px;">
                                         <tr >
                                             <th class=" text-dark">Date</th>
                                             <td class=" text-dark">:</td>
@@ -71,32 +72,82 @@
                                             <td class=" text-dark">:</td>
                                             <td class=" text-dark">{{ certificate.qc_inspdate }}</td>
                                         </tr>
-                                    </table>   
-                                    <section class="" style="position: absolute;left: 280px;bottom: 800px;">
+                                    </table> 
+                                </div>  
+                                    {% comment %}<section class="" style="position: absolute;left: 280px;bottom: 800px;">
                                         <h5 class="text-dark">I agree With All The Terms And Conditions</h5>
                                         <input checked="" type="checkbox" id="cbx" class="hidden-xs-up" style="position: absolute;left: -15px;bottom: 13px;">
-                                        <a class="" href="#">
-                                            <button id="myBtn" class="btn btn-outline-info text-dark" style="position: absolute;left: 250px;bottom: -60px; color:black;">Download
+                                        
+                                             <button id="download" class="btn btn-outline-info text-dark" style="position: absolute;left: 250px;bottom: -60px; color:black;">Download
                                                 
-                                            </button></a>
+                                            </button> 
 
-                                    </section>  
-                                    
-                                    
+                                    </section>  {% endcomment %}
+                                <div class="col-md-12 "style="position: absolute;left: 70px;bottom: 0px; color:black;"> 
+                                  <h6 class=" text-dark "><b>Materiel : Our/Your Reference</b></h6>  
+                                  <p class=" fst-italic" style="font-style:oblique;">{{ certificate.qc_sku }} {{ certificate.qc_pname }} /</p>
+
+                                  <p>This Product Was produced In Accordance With The Guidlines And Monitored In Every Manufacturing Stage.</p>
+                                  <p class="text-center fs-6">****END****</p>
+                                </div>
+                                
                             </div>
+                            
+                            </div>
+                            
+                            
                         
                         </div>
                     </div>
+                    
                 </div>
                 
+                {% comment %} <section class="" style="position: absolute;left: 280px;bottom: 0px;">
+                    <h5 class="text-white">I agree With All The Terms And Conditions</h5>
+                    <input checked="" type="checkbox"  onclick="enable()" class="hidden-xs-up" style="position: absolute;left: -15px;bottom: 13px;">
                     
+                         <button id="download btn"  class="btn btn-outline-info text-white" style="position: absolute;left: 150px;bottom: -60px; color:black;">Download
+                            
+                        </button> 
+
+                </section> {% endcomment %}
                     
                         
                        
                 
             </div>
+            <script>
+                window.onload = function () {
+                    document.getElementById("download")
+                        .addEventListener("click", () => {
+                            const invoice = this.document.getElementById("invoice");
+                            console.log(invoice);
+                            console.log(window);
+                            var opt = {
+                                margin: 1,
+                                filename: 'Quality_Certificate.pdf',
+                                image: { type: 'jpeg', quality: 0.98 },
+                                html2canvas: { scale: 2 },
+                                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                            };
+                            html2pdf().from(invoice).set(opt).save();
+                        })
+                }
+
+                function enable(){
+                    var check = document.getElementById("check");
+                    var btn = document.getElementById("btn");
+                    if(check.checked){
+                        btn.removeAttribute("disabled");
+
+                    }else{
+                        btn.disabled = "true";
+                    }
+                }
+            </script>
             
         </div>
+        
     </div>
    
    
