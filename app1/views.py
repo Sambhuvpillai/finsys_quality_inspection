@@ -32780,57 +32780,15 @@ def edit_inspection_page(request,id):
     }
     
     return render(request,'app1/edit_page.html',context)
-# def qi_page(request, id):
-#     if request.method=='POST':
-#         inspect = quality_inspection.objects.get(id=id)
-#         print(id)
-#         inspect.tdate=request.POST.get('date')
-#         inspect.p_name=request.POST.get('p_name')
-#         inspect.department = request.POST.get('department')
-#         inspect.inspected_no=request.POST.get('inspected_no')
-#         inspect.noninspected_no=request.POST.get('noninspected_no')
-#         inspect.inspected_by=request.POST.get('inspected_by')
-#         inspect.qualified_products=request.POST.get('qualified_products')
-#         inspect.nonqualified_products=request.POST.get('nonqualified_products')
-# #         try:
-# #             var1=noninventory.objects.get(name=p_name)
-# #             # print('noninventery'+str(var1.sku))
-# #             print(var1.sku)
-# #             sk=(var1.sku)
-            
-            
-# #         except:
-# #             print('not in non invo')
-# #             # pass
-# #         try:
-# #             var2=inventory.objects.get(name=p_name)
-# #             # print('invetery'+str(var1.sku))
-# #             print(var2.sku)
-# #             sk=(var2.sku)
-# #         except:
-# #             print('not in invontry ')
-# #                 # messages.info(
-# #                 #     request, 'Data Not Valid')
-                
-# #             # print(pro_name)
-# #             print(sk)
-# #         inspect.sku=request.POST.get('sku')
-# #         print(id)
 
-#         inspect.save()
-#         print("save")
-#         return redirect('quality_inspection_table')
-#     return redirect('edit_inspection_page')
-# def edit_quality_inspection(request,pk):
-    
-        
-#     return redirect('edit_inspection_page')
 # DELETE_INSPECTION
 def delete_inspection(request,id):
     inspect = quality_inspection.objects.get(id=id)
     inspect.delete()
     return redirect('quality_inspection_table')
 # quality management/quality certificate
+def certificate_base(request):
+    return render(request,'app1/certificate_base.html')
 
 
 def create_certificate_page(request):

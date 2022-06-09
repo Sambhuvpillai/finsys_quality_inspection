@@ -1,0 +1,47 @@
+{% extends 'app1/base.html' %}
+
+{% block body %}
+
+    {% load static %}
+    <div class="page-content">
+        <div class="card radius-15">
+            <div class="card-body">
+                <div class="card-title">
+                    <center><h3 class="mb-0">QUALITY CERTIFICATE</h3></center>
+                </div>
+                <hr/>
+            </div>
+        </div>
+        <div class="card radius-15" style="background-color: #243e54;">
+            <div class="card-body">
+                
+                
+            <div class="row">
+                    <div class="col-6 text-center">
+                        <a class="text-center" href="{% url 'create_certificate_page'%}">
+                            <button id="myBtn" class="btn btn-outline-info w-50 text-center text-grey"
+                            style="border-radius: 15px;">ADD
+                                
+                            </button>
+                {% comment %} <a class="text-center" href="{% url 'view_certificate_page'%}">
+                    <button id="myBtn" class="btn btn-outline-info w-50 text-center text-grey"
+                    style="border-radius: 15px;">VIEW
+                        
+                    </button>
+                </a> {% endcomment %}
+                    </div>
+                    <div class="col-6 text-center">
+                        <a class="text-center" href="{% url 'view_certificate_page'%}">
+                            <button id="myBtn" class="btn btn-outline-info w-50 text-center text-grey"
+                            style="border-radius: 15px;">VIEW
+                                
+                            </button>
+                        </a>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
+   
+   
+{% endblock %}
