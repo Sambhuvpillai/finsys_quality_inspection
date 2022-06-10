@@ -1,0 +1,97 @@
+{% extends 'app1/base.html' %}
+
+{% block body %}
+    {% load static %}
+    <div class="page-content">
+        <div class="card radius-15">
+             <div class="card-body">
+                <div class="card-title">
+                    <center><h3 class="mb-0">CREATE PROJECT</h3></center>
+                </div>
+                <hr/>
+            </div>}
+        </div>
+        <div class="card radius-15" style="background-color: #243e54;">
+            <div class="card-body">
+                
+                <hr/>
+                <form action="management" method="post" class="needs-validation" >
+                    {% csrf_token %}
+                    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+                        <div class="row">
+                            
+                            
+
+                            <div class="col-md-6 mt-3">
+                                <label>Product Name</label>
+                                {% comment %} <input type="text" class="form-control" id="" name="name"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div> {% endcomment %}
+                                <select class="form-control" name="pname">
+                                    {% for i in obj %}
+                                    <option value="none" selected disabled hidden>Select Product</option>
+                                    <option value="{{ i }}" >{{ i }}</option>
+                                    {% endfor %}
+                                    
+                                </select>
+                                
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Discription</label>
+                                <input type="text" class="form-control"  name="discription"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            
+                            
+                        {% comment %} </div>
+                        <div class="row"> {% endcomment %}
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Quantity</label>
+                                <input type="number" class="form-control" name="quantity"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div id="hello">
+                                    <label for="validationCustom03">Starting Date</label>
+                                <input type="date" class="form-control"  name="startdate"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                                </div>
+                            </div>
+                            
+                        {% comment %} </div>
+                        <div class="row"> {% endcomment %}
+                            
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Ending Date</label>
+                                <input type="date" class="form-control" name="enddate"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">Estimated Cost</label>
+                                <input type="number" class="form-control"  name="estimatedcost"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            {% comment %} <div class="col-md-6 mt-3">
+                                <label for="validationCustom03">estimated cost/Item</label>
+                                <input type="number" class="form-control"  name="nonqualified_products"
+                                       required style="background-color: #2f516f;color: white;">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div> {% endcomment %}
+                            <button class="btn btn-outline-info rounded-pill text-grey w-100 mt-3 mb-3"
+                                        type="submit">
+                                    Submit 
+                                </button>
+                        </div>
+                       
+                </form>
+            </div>
+        </div>
+    </div>
+   
+   
+{% endblock %}

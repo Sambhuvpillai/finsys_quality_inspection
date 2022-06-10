@@ -1109,5 +1109,13 @@ class quality_certificate(models.Model):
     qc_inspdate = models.CharField(max_length=90, blank=True)
     
     
+class project_management(models.Model):
+    pm_pname = models.CharField(max_length=90, blank=True)
+    pm_discription = models.CharField(max_length=90, blank=True) 
+    pm_quantity = models.CharField(max_length=90, blank=True) 
+    pm_start_date = models.DateField()
+    pm_end_date = models.DateField()
+    pm_estcost = models.CharField(max_length=90, blank=True)
+    pm_estcostpitem = models.CharField(max_length=90, blank=True)
     
     

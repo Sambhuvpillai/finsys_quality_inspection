@@ -1,0 +1,78 @@
+{% extends 'app1/base.html' %}
+{% block body %}
+{% load static %}
+    <body>
+        {% comment %} <a class="nav-link" href="{% url 'inspect_here'%}"><i class="fa fa-th-list fa-fw mr-1"></i>Quality Inspect Here</a>{% url 'apply_leave'%} {% endcomment %}
+        <div class="page-content">
+            <div class="card radius-15">
+                <div class="card-body">
+                    <div class="card-title">
+                        <center><h2 class="mb-0">PROJECT VIEW</h2></center>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="card radius-15">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-2">
+                            {% comment %} <a class="" href="{% url 'inspect_here'%}">
+                                <button id="myBtn" class="btn btn-outline-info w-75 text-grey">Add
+                                    
+                                </button>
+                            </a> {% endcomment %}
+                        </div>
+                    </div>
+                    <table class="table table-responsive-md mt-3">
+                        <thead>
+                        <tr>
+                            <th>PRODUCT NAME</th>
+                            <th>DISCRIPTION</th>
+                            <th>QUANTITY</th>
+                            <th>START DATE</th>
+                            <th>END DATE</th>
+                            <th>ESTIMATED COST</th>
+                            <th>ESTIMATED COST/ITEM</th>
+                            <th>ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for manage in manage %}
+                            {% comment %} {% if invoices.cid_id == cmp1.cid %} {% endcomment %}
+    
+                                <tr>
+                                    <th>{{ manage.pm_pname }}</th>
+                                    <td>{{ manage.pm_discription }}</td>
+                                    <td>{{ manage.pm_quantity }}</td>
+                                    <td>{{ manage.pm_start_date }}</td>
+                                    <td>{{ manage.pm_end_date }}</td>
+                                    <td>{{ manage.pm_estcost }}</td>
+                                    <td>{{ manage.pm_estcostpitem }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-outline-info dropdown-toggle text-grey"
+                                                    data-toggle="dropdown">Actions
+                                            </button>
+                                            <div class="dropdown-menu" style="background-color: white;">
+                                                <a href=" {% url 'edit_mana' manage.id  %}" class="dropdown-item"
+                                                   style="color: black; font-size: 15px;"><i class="bx bx-edit"><b>EDIT</b></i></a>
+                                                <a href="{% url 'delete_manage' manage.id  %}" class="dropdown-item"
+                                                   style="color: black; font-size: 15px;"><i
+                                                        class="bx bx-trash"><b>DELETE</b></i></a>
+                                                        {% comment %} {% url 'edit_inspection_page' insp.id  %} {% endcomment %}
+                                            </div>
+                                        </div>
+                                    </td>
+    
+                                </tr>
+                            {% comment %} {% endif %} {% endcomment %}
+                        {% endfor %}
+                        </tbody>
+    
+    
+                    </table>
+                </div>
+        <script src="" async defer></script>
+    </body>
+{% endblock %}

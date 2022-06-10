@@ -369,6 +369,14 @@ urlpatterns = [
     # edit qc
     re_path(r'^edit_certificate_page/(?P<id>\d+)$', views.edit_certificate_page, name='edit_certificate_page'),
     re_path(r'^delete_certificate/(?P<id>\d+)$', views.delete_certificate, name='delete_certificate'),
-    # re_path('edit_certificate_page',views.edit_certificate_page,name='edit_certificate_page'),
+    
+    # project_management
+    re_path('management_base',views.management_base,name='management_base'),
+    re_path('create_management',views.create_management,name='create_management'),
+    re_path('management',views.management,name='management'),
+    re_path('view_project',views.view_project,name='view_project'),
+    re_path(r'^edit_mana/(?P<id>\d+)$', views.edit_mana, name='edit_mana'),
+    re_path(r'^delete_manage/(?P<id>\d+)$', views.delete_manage, name='delete_manage'),
+    
     
 ]

@@ -32909,6 +32909,104 @@ def delete_certificate(request,id):
     certificate = quality_certificate.objects.get(id=id)
     certificate.delete()
     return redirect('view_certificate_page')
+
+
+# project_management
+def management_base(request):
+    return render(request,'app1/management_page.html')
+def create_management(request):
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+        # print("i.name")
+    for j in var2:
+        ls.append(j.name)
+    print(ls)
+    # toda = date.today()
+    # s1 = toda.strftime("%Y-%m-%d")
+    context={'obj':ls}
+    return render(request,'app1/create_management.html',context)
+
+
+def management(request):
+    if request.method =='POST':
+        pname=request.POST.get('pname')
+        discription=request.POST.get('discription')
+        quantity=int(request.POST.get('quantity'))
+        startdate=request.POST.get('startdate')
+        enddate=request.POST.get('enddate')
+        estimatedcost=int(request.POST.get('estimatedcost'))
+        # estcost_item = request.POST.get('estcost_item')
+        x=estimatedcost
+        y=quantity
+        # t=x/y
+        # estcost_item = ('t')
+        # print(x/y)
+        estcost_item=x/y
+        
+        manage=project_management(pm_pname=pname,
+                                        pm_discription=discription,
+                                        pm_quantity=quantity,
+                                        pm_start_date=startdate,
+                                        pm_end_date=enddate,
+                                        pm_estcost=estimatedcost,
+                                        pm_estcostpitem=estcost_item)
+        # pm_estcostpitem=
+        manage.save()
+        print(x/y)
+        return redirect('view_project')
+    else:
+        return render(request,'app1/create_management.html')
+    
+
+
+def view_project(request):
+    manage = project_management.objects.all()
+    context={'manage':manage}
+    return render(request,'app1/view_management.html',context)
+
+def edit_mana(request,id):
+    if request.method=='POST':
+        mana = project_management.objects.get(id=id)
+        mana.pm_pname=request.POST.get('pm_pname')
+        mana.pm_discription=request.POST.get('pm_discription')
+        mana.pm_quantity=request.POST.get('pm_quantity')
+        mana.pm_start_date=request.POST.get('pm_start_date')
+        mana.pm_end_date=request.POST.get('pm_end_date')
+        mana.pm_estcost=request.POST.get('pm_estcost')
+        mana.save()
+        return redirect('view_project')
+        
+    
+    mana=project_management.objects.get(id=id)
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+        # print("i.name")
+    for j in var2:
+        ls.append(j.name)
+    print(ls)
+    # toda = date.today()
+    # s1 = toda.strftime("%Y-%m-%d")
+    # context={'obj':ls}
+    context={'mana':mana,'obj':ls}
+    # context={'mana':mana}
+    return render(request,'app1/edit_management_page.html',context)
+
+def delete_manage(request,id):
+    manage = project_management.objects.get(id=id)
+    manage.delete()
+    return redirect('view_project')
+
+
+     
+    
+    
+    
      
      
     
