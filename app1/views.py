@@ -32972,11 +32972,18 @@ def edit_mana(request,id):
         mana = project_management.objects.get(id=id)
         mana.pm_pname=request.POST.get('pm_pname')
         mana.pm_discription=request.POST.get('pm_discription')
-        mana.pm_quantity=request.POST.get('pm_quantity')
+        mana.pm_quantity=int(request.POST.get('pm_quantity'))
         mana.pm_start_date=request.POST.get('pm_start_date')
         mana.pm_end_date=request.POST.get('pm_end_date')
-        mana.pm_estcost=request.POST.get('pm_estcost')
+        mana.pm_estcost=int(request.POST.get('pm_estcost'))
+        x=mana.pm_estcost
+        y=mana.pm_quantity
+        # t=x/y
+        # estcost_item = ('t')
+        # print(x/y)
+        mana.pm_estcostpitem=x/y
         mana.save()
+        print(x/y)
         return redirect('view_project')
         
     
