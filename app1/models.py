@@ -1118,4 +1118,35 @@ class project_management(models.Model):
     pm_estcost = models.CharField(max_length=90, blank=True)
     pm_estcostpitem = models.CharField(max_length=90, blank=True)
     
+
+class customercomplaint(models.Model):
+    invoiceno = models.CharField(max_length=255, null=True, blank=True)
+    skunumber = models.CharField(max_length=255, null=True, blank=True)
+    name=models.CharField(max_length=255, null=True, blank=True)
+    complaint_qty = models.CharField(max_length=255, null=True, blank=True)
+    description = models.CharField(max_length=255, null=True, blank=True)
+    date=models.DateField(max_length=10,null=True,blank=True)
+    
+    
+class complaint_against_supplier(models.Model):
+    supplier_name=models.CharField(max_length=255, null=True, blank=True)
+    product_name=models.CharField(max_length=255, null=True, blank=True)
+    date=models.DateField(max_length=10,null=True,blank=True)
+    inspected_qty=models.CharField(max_length=255, null=True, blank=True)
+    complaint_qty=models.CharField(max_length=255, null=True, blank=True)
+    description=models.CharField(max_length=255, null=True, blank=True)
+    sku_no=models.CharField(max_length=255, null=True, blank=True)
+    
+    
+class material_error_model(models.Model):
+    product_name=models.CharField(max_length=255, null=True, blank=True)
+    inspected_qty=models.CharField(max_length=255, null=True, blank=True)
+    complaint_qty=models.CharField(max_length=255, null=True, blank=True)
+    description=models.CharField(max_length=255, null=True, blank=True)
+    skunumber = models.CharField(max_length=255, null=True, blank=True)
+    date=models.DateField(max_length=10,null=True,blank=True)
+
+    def __str_(self):
+        return self.product_name
+    
     

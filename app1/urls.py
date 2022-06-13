@@ -378,5 +378,25 @@ urlpatterns = [
     re_path(r'^edit_mana/(?P<id>\d+)$', views.edit_mana, name='edit_mana'),
     re_path(r'^delete_manage/(?P<id>\d+)$', views.delete_manage, name='delete_manage'),
     
+    #DD
+    re_path(r'^quality_managment_notification',views.quality_managment_notification,name='quality_managment_notification'),
+    re_path(r'^customer_complaint',views.customer_complaint,name='customer_complaint'),
+    re_path(r'^complaint_supplier',views.complaint_supplier,name='complaint_supplier'),
+    re_path(r'^material_error',views.material_error,name='material_error'),
+    re_path(r'^view_customer_complaint',views.view_customer_complaint,name='view_customer_complaint'),
+    re_path(r'^view_complaint_against_supplier',views.view_complaint_against_supplier,name='view_complaint_against_supplier'),
+    re_path(r'^view_material_erorr',views.view_material_erorr,name='view_material_erorr'),
+
+    re_path(r'^delete_customer_complaint/(?P<pk>\d+)$',views.delete_customer_complaint,name='delete_customer_complaint'),
+    re_path(r'^delete_view_complaint_against_supplier/(?P<pk>\d+)$',views.delete_view_complaint_against_supplier,name='delete_view_complaint_against_supplier'),
+    re_path(r'^delete_view_material_erorr/(?P<pk>\d+)$',views.delete_view_material_erorr,name='delete_view_material_erorr'),
+
+    re_path(r'^edit_material_erorr/(?P<pk>\d+)$',views.edit_material_erorr,name='edit_material_erorr'),
+    re_path(r'^edit_complaint_against_supplier/(?P<pk>\d+)$',views.edit_complaint_against_supplier,name='edit_complaint_against_supplier'),
+    re_path(r'^edit_customer_complaint/(?P<pk>\d+)$',views.edit_customer_complaint,name='edit_customer_complaint'),
+
+    re_path(r'^filter_date_qulity_notification',views.filter_date_qulity_notification,name='filter_date_qulity_notification'),
+
+    
     
 ]

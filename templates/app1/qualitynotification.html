@@ -1,0 +1,123 @@
+{% extends 'app1/base.html' %}
+{% load static %}
+{% block body %}
+<style>
+    /* Style The Dropdown Button */
+    .dropbtn {
+      background-color: #3a5e7e;
+      color: white;
+      padding: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      min-width: 100%;
+      border: hidden;
+      border-width: 1px;
+      border-color: #2f3031;
+      border-radius: 2%;
+      height: 75px;
+    
+    }
+    
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+
+ 
+    }
+    
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #213b52;
+      width: 100%;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: rgb(255, 255, 255);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #2f516f}
+    
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+      background-color: #315472;
+    }
+    .N{
+      text-transform: uppercase;
+    }
+    .N:hover{
+      text-transform: uppercase;
+      font-weight: 600;
+      
+    }
+    </style>
+    
+<div class="container" style="min-height: 100vh;">
+  <div class="page-content">
+    <div class="card radius-15">
+        <div class="card-body">
+            <div class="card-title">
+                <center>
+                    <h2 class="mb-0 ">QUALITY NOTIFICATION</h2>
+                </center>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+
+          <div class="col-md-4">
+            <td></td> <div class="dropdown w-100">
+              <button class="dropbtn" >CREATE</button>
+              <div class="dropdown-content">
+                <a class="N" href="{% url 'customer_complaint' %}"> Customer Complaint</a>
+                <a class="N" href="{% url 'complaint_supplier' %}">Complaint against supplier</a>
+                <a class="N" href="{% url 'material_error' %}">Material Erorr</a>
+                  {% comment %} <a class="N" href="{% url 'customer_complaint' %}"> Customer Complaint</a>
+                  <a class="N" href="{% url 'complaint_supplier' %}">Complaint against supplier</a>
+                  <a class="N" href="{% url 'material_error' %}">Material Erorr</a> {% endcomment %}
+              </div>
+          </div></td>
+
+          </div>
+          <div class="col-md-4">
+            <td></td> <div class="dropdown w-100">
+              <button class="dropbtn ">VIEW</button>
+              <div class="dropdown-content">
+                <a class="N" href="{% url 'view_customer_complaint' %}">Customer Complaints</a>
+                <a class="N" href="{% url 'view_complaint_against_supplier' %}"> Complaint Against Supplier</a>
+                <a class="N" href="{% url 'view_material_erorr' %}">Meterial Erorr</a>
+                  {% comment %} <a class="N" href="{% url 'view_customer_complaint' %}">Customer Complaints</a>
+                  <a class="N" href="{% url 'view_complaint_against_supplier' %}"> Complaint Against Supplier</a>
+                  <a class="N" href="{% url 'view_material_erorr' %}">Meterial Erorr</a> {% endcomment %}
+              </div>
+          </div></td>
+          </div>
+            <div class="col-md-2"></div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

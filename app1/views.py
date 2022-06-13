@@ -33009,6 +33009,442 @@ def delete_manage(request,id):
     manage.delete()
     return redirect('view_project')
 
+# quality_management_notification
+@login_required(login_url='regcomp')
+def quality_managment_notification(request):
+    return render(request,'app1/qualitynotification.html')
+
+
+def customer_complaint(request):
+    if 'term' in request.GET:
+        qs=invoice.objects.filter(invoiceno__istartswith=request.GET.get('term'))
+        inumbers=list()
+        for x in qs:
+            inumbers.append(invoice.invoiceno)
+            return JsonResponse(inumbers,safe=False)
+            
+
+    if request.method=='POST':
+        try:
+            invno=request.POST['invoiceno']
+            cqty=request.POST['cqty']
+            desc=request.POST['compli']
+            dt=request.POST['date']
+            
+            print(cqty)
+            print(desc)
+            m=invoice.objects.filter(invoiceno=invno)
+            if len(m) !=0 and len(dt)!=0:
+
+                for i in m:
+                    try:
+                        var1=noninventory.objects.get(cid=i.cid) 
+                        # print('noninventery'+str(var1.sku))
+                        sk=(var1.sku)
+                        name=(var1.name)
+                    except:
+                        try:
+                            var1=inventory.objects.get(cid=i.cid)
+                            # print('invetery'+str(var1.sku))
+                            sk=(var1.sku)
+                            name=(var1.name)
+                        except:
+                            print('not found')
+
+
+
+                ex=customercomplaint(
+
+                    invoiceno =invno,
+                    skunumber =sk,
+                    complaint_qty =cqty,
+                    description =desc,
+                    name=name,
+                    date=dt,
+
+                )
+                ex.save()
+                return redirect('view_customer_complaint')
+            else:
+                 messages.info(
+                            request, 'Not valid')
+        except:
+            messages.info(
+                            request, 'Not valid')
+        
+        
+
+
+
+
+    toda = date.today()
+    
+    s1 = toda.strftime("%Y-%m-%d")
+    context={
+         'max':s1
+     }
+
+    return render(request,'app1/customercomplint.html',context)
+
+def view_customer_complaint(request):
+    mdl=customercomplaint.objects.all().order_by('date')
+
+    return render(request,'app1/viewcustomer_complaint.html',{'obj':mdl})
+
+def filter_date_qulity_notification(request):
+    if request.method=='POST':
+        toda = date.today()
+        tod = toda.strftime("%Y-%m-%d")
+        try:
+
+            typ=request.POST['filtertyp_customercomplaint_view']
+           
+            if typ=='Today':
+                start=tod
+                end=tod
+            elif typ=='Custom':
+                start = request.POST['fper']
+                end = request.POST['tper']
+            elif typ=='This month':
+                start=toda.strftime("%Y-%m-1")
+                end=tod
+            else:
+                mdl=customercomplaint.objects.all().order_by('date')
+                return render(request,'app1/viewcustomer_complaint.html',{'obj':mdl})
+            mdl=customercomplaint.objects.filter(date__range=[start, end]).order_by('date')
+            return render(request,'app1/viewcustomer_complaint.html',{'obj':mdl})
+        except:
+            try:
+
+                typ=request.POST['filtertyp_material_view']
+               
+                if typ=='Today':
+                    start=tod
+                    end=tod
+                elif typ=='Custom':
+                    start = request.POST['fper']
+                    end = request.POST['tper']
+
+                elif typ=='This month':
+                    start=toda.strftime("%Y-%m-1")
+                    end=tod
+                else:
+                    mdl=material_error_model.objects.all().order_by('date')
+                    return render(request,'app1/view_material_erorr.html',{'obj':mdl})
+               
+                mdl=material_error_model.objects.filter(date__range=[start, end]).order_by('date')
+               
+                return render(request,'app1/view_material_erorr.html',{'obj':mdl})
+            except:
+                try:
+
+                    typ=request.POST['filtertyp_com_against_supplier_view']
+                   
+                    if typ=='Today':
+                        start=tod
+                        end=tod
+                    elif typ=='Custom':
+                        start = request.POST['fper']
+                        end = request.POST['tper']
+
+                    elif typ=='This month':
+                        start=toda.strftime("%Y-%m-1")
+                        end=tod
+                    else:
+                        mdl=complaint_against_supplier.objects.all().order_by('date')
+                        return render(request,'app1/view_complaint_against_supplier.html',{'obj':mdl})
+
+                    mdl=complaint_against_supplier.objects.filter(date__range=[start, end]).order_by('date')
+                    return render(request,'app1/view_complaint_against_supplier.html',{'obj':mdl})    
+                except:
+                    messages.info(request, 'Somthing wrong')
+                    
+                    
+def edit_customer_complaint(request,pk):
+    if request.method=='POST':
+        print(pk)
+        var=customercomplaint.objects.get(id=pk)
+        
+        var.complaint_qty=request.POST.get('cmp_qty')
+        t=request.POST.get('complint')
+        l=request.POST.get('date')
+        print(len(l))
+
+        if not len(l)<=0:
+            var.date=l
+        elif not len(t)<=0:
+            var.description=t
+        else:
+            pass
+                
+
+        print(l)
+       
+
+        
+        var.save()
+        return redirect('view_customer_complaint')
+    toda = date.today()
+    s1 = toda.strftime("%Y-%m-%d")
+    mdl=customercomplaint.objects.get(id=pk)
+    context={
+        'max':s1,
+        'obj':mdl,
+        
+    }
+        
+    
+    return render(request,'app1/edit_customer_complaint.html',context)
+
+def delete_customer_complaint(request,pk):
+    mdl=customercomplaint.objects.get(id=pk)
+
+    print(mdl)
+    mdl.delete()
+    
+    return redirect('view_customer_complaint')
+
+def complaint_supplier(request):
+    try:
+        if request.method=='POST':
+            supplier_name=request.POST['suplyr_name']
+            pro_name=request.POST['pr_name']
+            dt=request.POST['date']
+            inspect_qty=request.POST['insp_qty']
+            complaint_qty=request.POST['cmp_qty']
+            description=request.POST['complint']
+
+            try:
+                var1=noninventory.objects.get(name=pro_name)
+                # print('noninventery'+str(var1.sku))
+                print(var1.sku)
+                sk=(var1.sku)
+            
+            except:
+                print('not in non invo')
+                # pass
+            try:
+                var2=inventory.objects.get(name=pro_name)
+                # print('invetery'+str(var1.sku))
+                print(var2.sku)
+                sk=(var2.sku)
+            except:
+                print('not in invontry ')
+                # messages.info(
+                #     request, ' DataNot Valid')
+                
+            # print(pro_name)
+            print(sk)
+
+
+
+
+            mdl=complaint_against_supplier(
+                supplier_name=supplier_name,
+                product_name=pro_name,
+                date=dt,
+                inspected_qty=inspect_qty,
+                complaint_qty=complaint_qty,
+                description=description,
+                sku_no=sk,
+            )
+            mdl.save()
+            return redirect('view_complaint_against_supplier')
+    except:
+        messages.info(
+                    request, 'Not valid')
+        
+    mdl=supplier.objects.all()
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+    for j in var2:
+        ls.append(j.name)
+    toda = date.today()
+    
+    s1 = toda.strftime("%Y-%m-%d")
+    context={
+        'obj':mdl,
+        'ob':ls,
+        'max':s1,
+    }
+    return render(request,'app1/complaintagainstsupplr.html',context)
+
+def view_complaint_against_supplier(request):
+    mdl=complaint_against_supplier.objects.all().order_by('date')
+
+    return render(request,'app1/view_complaint_against_supplier.html',{'obj':mdl})
+
+def edit_complaint_against_supplier(request,pk):
+    if request.method=='POST':
+        print(pk)
+        var=complaint_against_supplier.objects.get(id=pk)
+        var.inspected_qty=request.POST.get('insp_qty')
+        var.complaint_qty=request.POST.get('cmp_qty')
+        t=request.POST.get('complint')
+        l=request.POST.get('date')
+        print(len(l))
+
+        if not len(l)<=0:
+            var.date=l
+        elif not len(t)<=0:
+            var.description=t
+        else:
+            pass
+
+
+        print(l)
+       
+
+        
+        var.save()
+       
+        return redirect('view_complaint_against_supplier')
+
+
+
+    print(pk)
+    mdl=complaint_against_supplier.objects.get(id=pk)
+    toda = date.today()
+    s1 = toda.strftime("%Y-%m-%d")
+    context={
+        'max':s1,
+        'obj':mdl,
+        
+    }
+        
+    return render(request,'app1/edit_complaint_against_supllier.html',context)
+
+def delete_view_complaint_against_supplier(request,pk):
+    mdl=complaint_against_supplier.objects.get(id=pk)
+    mdl.delete()
+    print('-------------------------------------------')
+
+    return redirect('view_complaint_against_supplier')
+
+
+def material_error(request):
+    try:
+        if request.method=='POST':
+            pro_name=request.POST['pro_name']
+            inpected_qty=request.POST['insp_qty']
+            complaint_qty=request.POST['cmp_qty']
+            description=request.POST['complint']
+            dt=request.POST['date']
+            print(pro_name)
+            
+
+            try:
+                var1=noninventory.objects.get(name=pro_name)
+                # print('noninventery'+str(var1.sku))
+                print(var1.sku)
+                sk=(var1.sku)
+            
+            except:
+                print('not in non invo')
+              
+                try:
+                    var2=inventory.objects.get(name=pro_name)
+                    # print('invetery'+str(var1.sku))
+                    print(var2.sku)
+                    sk=(var2.sku)
+                except:
+                    print('not in invontry ')
+                    pass
+            # print(pro_name)
+            print(sk)
+
+
+            mdl=material_error_model(
+
+
+                product_name=pro_name,
+                inspected_qty=inpected_qty,
+                complaint_qty=complaint_qty,
+                description=description,
+                skunumber =sk,
+                date=dt,
+            
+
+            )
+            mdl.save()
+            return redirect('view_material_erorr')
+        
+    except:
+        messages.info(
+                    request, 'Not valid')
+        
+
+    ls=[]
+    var1=noninventory.objects.all() 
+    var2=inventory.objects.all()
+    for i in var1:
+        ls.append(i.name)
+    for j in var2:
+        ls.append(j.name)
+    # print(ls)
+    toda = date.today()
+    s1 = toda.strftime("%Y-%m-%d")
+    context={
+        'max':s1,
+        'obj':ls,
+        
+    }
+   
+    return render(request,'app1/material_error.html',context)
+
+
+def view_material_erorr(request):
+   
+    mdl=material_error_model.objects.all().order_by('date')
+    return render(request,'app1/view_material_erorr.html',{'obj':mdl})
+
+def edit_material_erorr(request,pk):
+    
+    if request.method=='POST':
+        var=material_error_model.objects.get(id=pk)
+        var.inspected_qty=request.POST.get('insp_qty')
+        var.complaint_qty=request.POST.get('cmp_qty')
+        t=request.POST.get('complint')
+        l=request.POST.get('date')
+        print(len(l))
+
+        if not len(l)<=0:
+            var.date=l
+
+        elif not len(t)<=0:
+            var.description=t
+
+        else:
+            pass
+
+
+        print(l)
+        var.save()
+       
+        return redirect('view_material_erorr')
+  
+    mdl=material_error_model.objects.get(id=pk)
+    toda = date.today()
+    s1 = toda.strftime("%Y-%m-%d")
+    context={
+        'max':s1,
+        'obj':mdl,
+        
+    }
+        
+    return render(request,'app1/edit_material_erorr.html',context)
+
+def delete_view_material_erorr(request,pk):
+    mdl=material_error_model.objects.get(id=pk)
+    mdl.delete()
+    return redirect('view_material_erorr')
+
+
+
+
 
      
     

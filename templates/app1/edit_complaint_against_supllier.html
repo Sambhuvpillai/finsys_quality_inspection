@@ -1,0 +1,69 @@
+{% extends "app1/base.html" %}
+{% block body %}
+
+
+<div class="page-content">
+    <div class="card radius-15">
+        <div class="card-body">
+            <div class="card-title">
+                <center>
+                    <h2 class="mb-0">EDIT FIELDS</h2>
+                </center>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="card radius-15">
+            <div class="card-body">
+                <form action="{% url 'edit_complaint_against_supplier' obj.id %}" method="post">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-1">
+
+
+
+
+                        </div>
+                        <div class="col-5">
+                            <label class="mt-2">Date:</label>
+                            <input class="form-control m-0" type="date" id="date" name="date" max="{{max}}" min=""><br>
+                            <label class="">Quantity:</label>
+
+
+                            <div class=""><input class="form-control " type="number" name="insp_qty" value="{{obj.inspected_qty}}"
+                                    placeholder="Inspected Quantity">
+                            </div><br>
+                            <div class=""><input class="form-control " type="number" name="cmp_qty" value="{{obj.complaint_qty}}"
+                                    placeholder="Complaint Quantity"></div>
+
+
+
+
+                        </div>
+                        <div class="col-5">
+                           
+
+                            <label class="mt-0" for="des">Description</label>
+                            <textarea class="form-control " name="complint" id="bname" rows="3" type="text" placeholder="{{obj.description}}" value=""
+                                style="background-color: #2f516f; color: white;" required></textarea>
+
+                        </div>
+                        <div class="col-1">
+
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-outline-info mt-4" type="submit">save</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+  
+{% endblock body %}
