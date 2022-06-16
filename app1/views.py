@@ -32571,8 +32571,13 @@ def cash_flow_analyzer(request):
     fromdate = toda.strftime("%Y-%m-01")
     todate = toda.strftime("%Y-%m-31")
     
-    pmonth = int(toda.strftime("%m")) - 1
+    pmonth = str(int(toda.strftime("%m"))-1)
     tod2 = pmonth
+    print(tod2)
+    # if tod2 == 5:
+    #     print(tod2)
+    # else:
+    #     print("no")
     if tod2 == 12 or tod2 == 11 or tod2 == 10:
         fromdatem = f'{toda.strftime("%Y")}-{pmonth}-01'
         print("str",fromdate)
