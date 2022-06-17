@@ -66,7 +66,7 @@
                                         <tr>
                                             <th class="text-center"></th>
                                            
-                                            <th class="text-center"></th>
+                                            
                                             
                                             
                                             {% comment %} {% if pmonth3 == 1 %}
@@ -82,10 +82,11 @@
                                             <th class="text-center">april</th>
                                             
                                             {% endif %} {% endcomment %}
-                                            <th class="text-center"></th>
-                                            <th class="text-center"></th>
-                                            <th class="text-center">  </th>
-                                            <th class="text-center"></th>
+                                             <th class="text-center" id="month6"></th> 
+                                            <th class="text-center" id="month5"></th>
+                                            <th class="text-center" id="month4"></th>
+                                            <th class="text-center" id="month3"> </th>
+                                            <th class="text-center" id="month2"></th>
                                             {% comment %} {% if tod2 == 5 %}
                                             <th class="text-center">May</th>
                                             {% endif %} {% endcomment %}
@@ -310,7 +311,7 @@
                                                 <h6><b>Advertising/Promotional</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" value="" style="background-color: #2f516f;">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" value="{{date8}}" style="background-color: #2f516f;">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{date7}}">
@@ -336,7 +337,7 @@
                                                 <h6><b>Bank Charges</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dom6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dom5}}">
@@ -362,7 +363,7 @@
                                                 <h6><b>Business Licenses and Permits</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" >
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{don6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{don5}}">
@@ -388,7 +389,7 @@
                                                 <h6><b>Charitable Contributions</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{doc6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{doc5}}">
@@ -414,7 +415,7 @@
                                                 <h6><b>Computer and Internet Expense</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dov6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dov5}}">
@@ -440,7 +441,7 @@
                                                 <h6><b>Continuing Education</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dox6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dox5}}">
@@ -466,7 +467,7 @@
                                                 <h6><b>Depreciation Expense</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dop6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dop5}}">
@@ -492,7 +493,7 @@
                                                 <h6><b>Dues and Subscriptions</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{doy6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{doy5}}">
@@ -518,7 +519,7 @@
                                                 <h6><b>Housekeeping Charges</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dot6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dot5}}">
@@ -544,7 +545,7 @@
                                                 <h6><b>Insurance Expense</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;"  value="{{doi6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{doi5}}">
@@ -570,7 +571,7 @@
                                                 <h6><b>Insurance Expense-General Liability Insurance</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dor6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dor5}}">
@@ -596,7 +597,7 @@
                                                 <h6><b>Insurance Expense-Health Insurance</b></h6>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                                <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{dok6}}">
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{dok5}}">
@@ -4004,23 +4005,286 @@
     </script>
     <script>
         var todayDate = new Date();
-        var month = todayDate.getMonth()-1;
-        {% comment %} console.log(month); {% endcomment %}
-       if (month == 1){
-        console.log("janvary");
+        var month = todayDate.getMonth();
+        console.log(month);
+        {% comment %} var var1 = "may";
+        var var2 =""; {% endcomment %}
+        {% comment %} var mon = month; {% endcomment %}
+
+        
+      
+        if ( month == "1" || month == "-11"){
+        document.getElementById('month2').innerHTML = 'January'
        }
-       else if (month == 2){
-        console.log("februvary");
+       else if ( month == "2" || month == "-10"){
+        document.getElementById('month2').innerHTML = 'Februvary'
+
        }
-       else if (month == 3){
-        console.log("march");
+       else if ( month == "3" || month == "-9"){
+        document.getElementById('month2').innerHTML = 'March'
+
        }
-       else if (month == 4){
-        console.log("april");
+       else if ( month == "4" || month == "-8"){
+        document.getElementById('month2').innerHTML = 'April'
+
        }
-       else  (month == 5){
+       else if ( month == "5" || month == "-7"){
+        document.getElementById('month2').innerHTML = 'May'
         console.log("may");
        }
+       else if ( month == "6" || month == "-6"){
+        document.getElementById('month2').innerHTML = 'June'
+
+       }
+       else if ( month == "7" || month == "-5"){
+        document.getElementById('month2').innerHTML = 'July'
+
+       }
+       else if ( month == "8" || month == "-4"){
+        document.getElementById('month2').innerHTML = 'August'
+
+       }
+       else if ( month == "9" || month == "-3"){
+        document.getElementById('month2').innerHTML = 'September'
+
+       }
+       else if ( month == "10" || month == "-2"){
+        document.getElementById('month2').innerHTML = 'October'
+
+       }
+       else if ( month == "11" || month == "-1"){
+        document.getElementById('month2').innerHTML = 'November'
+
+       }
+       else if ( month == "12" || month == "0"){
+        document.getElementById('month2').innerHTML = 'December'
+
+       }
+       else {
+        console.log("Nop");
+       } 
+
+       var month1 = todayDate.getMonth()-1;
+      
+       if ( month1 == "1" || month1 == "-11"){
+        document.getElementById('month3').innerHTML = 'January'
+       }
+       else if ( month1 == "2" || month1 == "-10"){
+        document.getElementById('month3').innerHTML = 'Februvary'
+
+       }
+       else if ( month1 == "3" || month1 == "-9"){
+        document.getElementById('month3').innerHTML = 'March'
+
+       }
+       else if ( month1 == "4" || month1 == "-8"){
+        document.getElementById('month3').innerHTML = 'April'
+
+       }
+       else if ( month1 == "5" || month1 == "-7"){
+        document.getElementById('month3').innerHTML = 'May'
+        console.log("may");
+       }
+       else if ( month1 == "6" || month1 == "-6"){
+        document.getElementById('month3').innerHTML = 'June'
+
+       }
+       else if ( month1 == "7" || month1 == "-5"){
+        document.getElementById('month3').innerHTML = 'July'
+
+       }
+       else if ( month1 == "8" || month1 == "-4"){
+        document.getElementById('month3').innerHTML = 'August'
+
+       }
+       else if ( month1 == "9" || month1 == "-3"){
+        document.getElementById('month3').innerHTML = 'September'
+
+       }
+       else if ( month1 == "10" || month1 == "-2"){
+        document.getElementById('month3').innerHTML = 'October'
+
+       }
+       else if ( month1 == "11" || month1 == "-1"){
+        document.getElementById('month3').innerHTML = 'November'
+
+       }
+       else if ( month1 == "12" || month1 == "0"){
+        document.getElementById('month3').innerHTML = 'December'
+
+       }
+       else {
+        console.log("Nop");
+       } 
+
+       {% comment %} 3rd_month {% endcomment %}
+       var month2 = todayDate.getMonth()-2;
+      
+       if ( month2 == "1" || month2 == "-11"){
+        document.getElementById('month4').innerHTML = 'January'
+       }
+       else if ( month2 == "2" || month2 == "-10"){
+        document.getElementById('month4').innerHTML = 'Februvary'
+
+       }
+       else if ( month2 == "3" || month2 == "-9"){
+        document.getElementById('month4').innerHTML = 'March'
+
+       }
+       else if ( month2 == "4" || month2 == "-8"){
+        document.getElementById('month4').innerHTML = 'April'
+
+       }
+       else if ( month2 == "5" || month2 == "-7"){
+        document.getElementById('month4').innerHTML = 'May'
+        console.log("may");
+       }
+       else if ( month2 == "6" || month2 == "-6"){
+        document.getElementById('month4').innerHTML = 'June'
+
+       }
+       else if ( month2 == "7" || month2 == "-5"){
+        document.getElementById('month4').innerHTML = 'July'
+
+       }
+       else if ( month2 == "8" || month2 == "-4"){
+        document.getElementById('month4').innerHTML = 'August'
+
+       }
+       else if ( month2 == "9" || month2 == "-3"){
+        document.getElementById('month4').innerHTML = 'September'
+
+       }
+       else if ( month2 == "10" || month2 == "-2"){
+        document.getElementById('month4').innerHTML = 'October'
+
+       }
+       else if ( month2 == "11" || month2 == "-1"){
+        document.getElementById('month4').innerHTML = 'November'
+
+       }
+       else if ( month2 == "12" || month2 == "0"){
+        document.getElementById('month4').innerHTML = 'December'
+
+       }
+       else {
+        console.log("Nop");
+       } 
+       {% comment %} 4rd_month {% endcomment %}
+       var month3 = todayDate.getMonth()-3;
+      
+       if ( month3 == "1" || month3 == "-11"){
+        document.getElementById('month5').innerHTML = 'January'
+       }
+       else if ( month3 == "2" || month3 == "-10"){
+        document.getElementById('month5').innerHTML = 'Februvary'
+
+       }
+       else if ( month3 == "3" || month3 == "-9"){
+        document.getElementById('month5').innerHTML = 'March'
+
+       }
+       else if ( month3 == "4" || month3 == "-8"){
+        document.getElementById('month5').innerHTML = 'April'
+
+       }
+       else if ( month3 == "5" || month3 == "-7"){
+        document.getElementById('month5').innerHTML = 'May'
+        console.log("may");
+       }
+       else if ( month3 == "6" || month3 == "-6"){
+        document.getElementById('month5').innerHTML = 'June'
+
+       }
+       else if ( month3 == "7" || month3 == "-5"){
+        document.getElementById('month5').innerHTML = 'July'
+
+       }
+       else if ( month3 == "8" || month3 == "-4"){
+        document.getElementById('month5').innerHTML = 'August'
+
+       }
+       else if ( month3 == "9" || month3 == "-3"){
+        document.getElementById('month5').innerHTML = 'September'
+
+       }
+       else if ( month3 == "10" || month3 == "-2"){
+        document.getElementById('month5').innerHTML = 'October'
+
+       }
+       else if ( month3 == "11" || month3 == "-1"){
+        document.getElementById('month5').innerHTML = 'November'
+
+       }
+       else if ( month3 == "12" || month3 == "0"){
+        document.getElementById('month5').innerHTML = 'December'
+
+       }
+       else {
+        console.log("Nop");
+       } 
+
+              {% comment %} 5rd_month {% endcomment %}
+              var month4 = todayDate.getMonth()-4;
+      
+              if ( month4 == "1" || month4 == "-11"){
+               document.getElementById('month6').innerHTML = 'January'
+              }
+              else if ( month4 == "2" || month4 == "-10"){
+               document.getElementById('month6').innerHTML = 'Februvary'
+       
+              }
+              else if ( month4 == "3" || month4 == "-9"){
+               document.getElementById('month6').innerHTML = 'March'
+       
+              }
+              else if ( month4 == "4" || month4 == "-8"){
+               document.getElementById('month6').innerHTML = 'April'
+       
+              }
+              else if ( month4 == "5" || month4 == "-7"){
+               document.getElementById('month6').innerHTML = 'May'
+               console.log("may");
+              }
+              else if ( month4 == "6" || month4 == "-6"){
+               document.getElementById('month6').innerHTML = 'June'
+       
+              }
+              else if ( month4 == "7" || month4 == "-5"){
+               document.getElementById('month6').innerHTML = 'July'
+       
+              }
+              else if ( month4 == "8" || month4 == "-4"){
+               document.getElementById('month6').innerHTML = 'August'
+       
+              }
+              else if ( month4 == "9" || month4 == "-3"){
+               document.getElementById('month6').innerHTML = 'September'
+       
+              }
+              else if ( month4 == "10" || month4 == "-2"){
+               document.getElementById('month6').innerHTML = 'October'
+       
+              }
+              else if ( month4 == "11" || month4 == "-1"){
+               document.getElementById('month6').innerHTML = 'November'
+       
+              }
+              else if ( month4 == "12" || month4 == "0"){
+               document.getElementById('month6').innerHTML = 'December'
+       
+              }
+              else {
+               console.log("Nop");
+              } 
+              var month5 = todayDate.getMonth()-5;
+              console.log(month5);
+              if ( month5 == "12" || month5 == "0"){
+                console.log('dec');
+              }
+              else{
+                console.log("Nop");
+              }
 
     </script>
 

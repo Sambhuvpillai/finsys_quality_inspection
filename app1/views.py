@@ -32571,7 +32571,7 @@ def cash_flow_analyzer(request):
     fromdate = toda.strftime("%Y-%m-01")
     todate = toda.strftime("%Y-%m-31")
     
-    pmonth = str(int(toda.strftime("%m"))-1)
+    pmonth = int(toda.strftime("%m"))-1
     tod2 = pmonth
     print(tod2)
     # if tod2 == 5:
@@ -32593,7 +32593,9 @@ def cash_flow_analyzer(request):
    
     
     pmonth1 = int(toda.strftime("%m")) - 2
+    
     tod3 = pmonth1
+    print(tod3)
     if tod3 == 12 or tod3 == 11 or tod3 == 10:
         fromdatem1 = f'{toda.strftime("%Y")}-{pmonth1}-01'
         todatem1 = f'{toda.strftime("%Y")}-{pmonth1}-31'
@@ -32604,6 +32606,7 @@ def cash_flow_analyzer(request):
     
     pmonth2 = int(toda.strftime("%m")) - 3
     tod4 = pmonth2
+    print(tod4)
     if tod4 == 12 or tod4 == 11 or tod4 == 10:
         fromdatem2 = f'{toda.strftime("%Y")}-{pmonth2}-01'
         todatem2 = f'{toda.strftime("%Y")}-{pmonth2}-31'
@@ -32613,6 +32616,7 @@ def cash_flow_analyzer(request):
     
     pmonth3 = int(toda.strftime("%m")) - 4
     tod5 = pmonth3
+    print(tod5)
     if tod5 == 12 or tod5 == 11 or tod5 == 10:
         fromdatem3 = f'{toda.strftime("%Y")}-{pmonth3}-01'
         todatem3 = f'{toda.strftime("%Y")}-{pmonth3}-31'
@@ -32623,7 +32627,17 @@ def cash_flow_analyzer(request):
     
     # pyear = int(toda.strftime("%Y")) - 1
     # fromdate = f'{pyear}-03-01'
-    # todate = f'{toda.strftime("%Y")}-03-31' 
+    # todate = f'{toda.strftime("%Y")}-03-31'
+    pmonth4 = int(toda.strftime("%m")) - 5
+    print(pmonth4)
+    tod6 = pmonth4
+    if tod6 == 12 or tod6 == 11 or tod6 == 10:
+        fromdatem4 = f'{toda.strftime("%Y")}-{pmonth4}-01'
+        todatem4 = f'{toda.strftime("%Y")}-{pmonth4}-31'
+    else:   
+        fromdatem4 = f'{toda.strftime("%Y")}-0{pmonth4}-01'
+        todatem4 = f'{toda.strftime("%Y")}-0{pmonth4}-31'
+     
     
     
     data_1 = []
@@ -32642,12 +32656,14 @@ def cash_flow_analyzer(request):
     context['pmonth1'] = pmonth1
     context['pmonth2'] = pmonth2
     context['pmonth3'] = pmonth3
+    context['pmonth4'] = pmonth4
     date_2 = []
     
     date1 = 0.0
     date3 = 0.0
     date5 = 0.0
     date7 = 0.0
+    date8 = 0.0
     #111eee
     
     bill = expences.objects.raw(
@@ -32688,6 +32704,7 @@ def cash_flow_analyzer(request):
     context['date6'] = date6
     
     date_7=[]
+    date7=0.0
     bill5 = expences.objects.raw(
         'select * from app1_expences where paymdate between %s and %s', [fromdatem3, todatem3, ])
     for be in bill5:
@@ -32695,6 +32712,16 @@ def cash_flow_analyzer(request):
             date_7.append(be.totamt)
             date7+=float(be.totamt)
     context['date7'] = date7
+    #############
+    date_8=[]
+    date8=0.0
+    bill6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bill6:
+        if be.paymmethod=='Cash' and be.category1 == 'Advertising/Promotional':
+            date_8.append(be.totamt)
+            date8+=float(be.totamt)
+    context['date8'] = date8
     
     #bank chanrges
     dom_1=[]
@@ -32747,6 +32774,16 @@ def cash_flow_analyzer(request):
             dom_5.append(be.totamt)
             dom5+=float(be.totamt)
     context['dom5'] = dom5
+    #############
+    dom_6 = []
+    dom6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Bank Charges':
+            dom_6.append(be.totamt)
+            dom6+=float(be.totamt)
+    context['dom6'] = dom6
     
     
     #Business Licenses and Permits
@@ -32801,6 +32838,17 @@ def cash_flow_analyzer(request):
             don5+=float(be.totamt)
     context['don5'] = don5
     
+    ############
+    don_6 = []
+    don6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Business Licenses and Permits':
+            don_6.append(be.totamt)
+            don6+=float(be.totamt)
+    context['don6'] = don6
+    
     
     # Charitable Contributions
     doc_1=[]
@@ -32854,6 +32902,17 @@ def cash_flow_analyzer(request):
             doc5+=float(be.totamt)
     context['doc5'] = doc5
     
+    ####################
+    doc_6 = []
+    doc6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Charitable Contributions':
+            doc_6.append(be.totamt)
+            doc6+=float(be.totamt)
+    context['doc6'] = doc6
+    
     # Computer and Internet Expense
     dov_1=[]
     dov1 = 0.0
@@ -32905,6 +32964,16 @@ def cash_flow_analyzer(request):
             dov_5.append(be.totamt)
             dov5+=float(be.totamt)
     context['dov5'] = dov5
+    #####################
+    dov_6 = []
+    dov6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Computer and Internet Expense':
+            dov_6.append(be.totamt)
+            dov6+=float(be.totamt)
+    context['dov6'] = dov6
     
     # Continuing Education
     dox_1=[]
@@ -32957,6 +33026,16 @@ def cash_flow_analyzer(request):
             dox_5.append(be.totamt)
             dox5+=float(be.totamt)
     context['dox5'] = dox5
+    ###################
+    dox_6 = []
+    dox6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Continuing Education':
+            dox_6.append(be.totamt)
+            dox6+=float(be.totamt)
+    context['dox6'] = dox6
     
     # Depreciation Expense
     dop_1=[]
@@ -33009,6 +33088,16 @@ def cash_flow_analyzer(request):
             dop_5.append(be.totamt)
             dop5+=float(be.totamt)
     context['dop5'] = dop5
+    ###############
+    dop_6 = []
+    dop6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Depreciation Expense':
+            dop_6.append(be.totamt)
+            dop6+=float(be.totamt)
+    context['dop6'] = dop6
     
     # Dues and Subscriptions
     doy_1=[]
@@ -33061,6 +33150,16 @@ def cash_flow_analyzer(request):
             doy_5.append(be.totamt)
             doy5+=float(be.totamt)
     context['doy5'] = doy5
+    ####################
+    doy_6 = []
+    doy6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Dues and Subscriptions':
+            doy_6.append(be.totamt)
+            doy6+=float(be.totamt)
+    context['doy6'] = doy6
 
     # Housekeeping Charges
     dot_1=[]
@@ -33113,6 +33212,16 @@ def cash_flow_analyzer(request):
             dot_5.append(be.totamt)
             dot5+=float(be.totamt)
     context['dot5'] = dot5
+    #######################
+    dot_6 = []
+    dot6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal5:
+        if be.paymmethod=='Cash' and be.category1 == 'Housekeeping Charges':
+            dot_6.append(be.totamt)
+            dot6+=float(be.totamt)
+    context['dot6'] = dot6
     
     # Insurance Expense
     doi_1=[]
@@ -33165,6 +33274,16 @@ def cash_flow_analyzer(request):
             doi_5.append(be.totamt)
             doi5+=float(be.totamt)
     context['doi5'] = doi5
+    ###########################
+    doi_6 = []
+    doi6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Insurance Expense':
+            doi_6.append(be.totamt)
+            doi6+=float(be.totamt)
+    context['doi6'] = doi6
     
     # Insurance Expense-General Liability Insurance
     dor_1=[]
@@ -33212,6 +33331,16 @@ def cash_flow_analyzer(request):
             dor_5.append(be.totamt)
             dor5+=float(be.totamt)
     context['dor5'] = dor5
+    ##########################
+    dor_6 = []
+    dor6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Insurance Expense-General Liability Insurance':
+            dor_6.append(be.totamt)
+            dor6+=float(be.totamt)
+    context['dor6'] = dor6
     
     # Insurance Expense-Health Insurance
     dok_1=[]
@@ -33259,6 +33388,16 @@ def cash_flow_analyzer(request):
             dok_5.append(be.totamt)
             dok5+=float(be.totamt)
     context['dok5'] = dok5
+    ############################
+    dok_6 = []
+    dok6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Insurance Expense-Health Insurance':
+            dok_6.append(be.totamt)
+            dok6+=float(be.totamt)
+    context['dok6'] = dok6
     
     # Insurance Expense-Life and Disability Insurance
     doo_1=[]
