@@ -32574,10 +32574,7 @@ def cash_flow_analyzer(request):
     pmonth = int(toda.strftime("%m"))-1
     tod2 = pmonth
     print(tod2)
-    # if tod2 == 5:
-    #     print(tod2)
-    # else:
-    #     print("no")
+    
     if tod2 == 12 or tod2 == 11 or tod2 == 10:
         fromdatem = f'{toda.strftime("%Y")}-{pmonth}-01'
         print("str",fromdate)
@@ -32665,6 +32662,162 @@ def cash_flow_analyzer(request):
     date7 = 0.0
     date8 = 0.0
     #111eee
+    # cash inflows(income)
+    # accou.rec.collections
+    abc_1=[]
+    abc1 = 0.0
+    billa = payment.objects.raw(
+        'select * from app1_payment where paymdate between %s and %s', [fromdate, todate, ])
+    
+    for b in billa:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_1.append(b.amtreceived)
+            abc1+=float(b.amtreceived)
+    context['abc1'] = abc1
+    
+    abc_2=[]
+    abc2 = 0.0
+    billb = payment.objects.raw(
+        'select * from app1_payment where paymdate between %s and %s', [fromdatem, todatem, ])
+    
+    for b in billb:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_2.append(b.amtreceived)
+            abc2+=float(b.amtreceived)
+    context['abc2'] = abc2
+    
+    abc_3=[]
+    abc3 = 0.0
+    billc = payment.objects.raw(
+        'select * from app1_payment where paymdate between %s and %s', [fromdatem1, todatem1, ])
+    
+    for b in billc:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_3.append(b.amtreceived)
+            abc3+=float(b.amtreceived)
+    context['abc3'] = abc3
+    
+    abc_4=[]
+    abc4 = 0.0
+    billd = payment.objects.raw(
+        'select * from app1_payment where paymdate between %s and %s', [fromdatem2, todatem2, ])
+    
+    for b in billd:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_4.append(b.amtreceived)
+            abc4+=float(b.amtreceived)
+    context['abc4'] = abc4
+    
+    abc_5=[]
+    abc5 = 0.0
+    bille = payment.objects.raw(
+        'select * from app1_payment where paymdate between %s and %s', [fromdatem3, todatem3, ])
+    
+    for b in bille:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_5.append(b.amtreceived)
+            abc5+=float(b.amtreceived)
+    context['abc5'] = abc5
+    
+    abc_6=[]
+    abc6 = 0.0
+    billf = payment.objects.raw(
+        'select * from app1_payment where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    
+    for b in billf:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_6.append(b.amtreceived)
+            abc6+=float(b.amtreceived)
+    context['abc6'] = abc6
+    
+    # sales&receipts
+    abd_1=[]
+    abd1 = 0.0
+    billaa = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate between %s and %s', [fromdate, todate, ])
+    
+    for b in billaa:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_1.append(b.saaletotal)
+            abd1+=float(b.saaletotal)
+    context['abd1'] = abd1
+    
+    abd_2=[]
+    abd2 = 0.0
+    billab = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate between %s and %s', [fromdatem, todatem, ])
+    
+    for b in billab:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_2.append(b.saaletotal)
+            abd2+=float(b.saaletotal)
+    context['abd2'] = abd2
+    
+    abd_3=[]
+    abd3 = 0.0
+    billac = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate between %s and %s', [fromdatem1, todatem1, ])
+    
+    for b in billac:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_3.append(b.saaletotal)
+            abd3+=float(b.saaletotal)
+    context['abd3'] = abd3
+    
+    abd_4=[]
+    abd4 = 0.0
+    billad = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate between %s and %s', [fromdatem2, todatem2, ])
+    
+    for b in billad:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_4.append(b.saaletotal)
+            abd4+=float(b.saaletotal)
+    context['abd4'] = abd4
+    
+    abd_5=[]
+    abd5 = 0.0
+    billae = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate between %s and %s', [fromdatem3, todatem3, ])
+    
+    for b in billae:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_5.append(b.saaletotal)
+            abd5+=float(b.saaletotal)
+    context['abd5'] = abd5
+    
+    abd_6=[]
+    abd6 = 0.0
+    billaf = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate between %s and %s', [fromdatem4, todatem4, ])
+    
+    for b in billaf:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_6.append(b.saaletotal)
+            abd6+=float(b.saaletotal)
+    context['abd6'] = abd6
+    
+    
+    bank1 =0.0
+    for bb in billa:
+            if (bb.salepay=='Cash'):
+                data1_1.append(bb.totamt)
+                bank1+=float(bb.totamt)
+    context['bank1'] = bank1
+    ##################################
+    # cash outflows
     
     bill = expences.objects.raw(
         'select * from app1_expences where paymdate between %s and %s', [fromdate, todate, ])
@@ -36998,6 +37151,16 @@ def cash_flow_analyzer(request):
             kingd_5.append(be.totamt)
             kingd5+=float(be.totamt)
     context['kingd5'] = kingd5
+    #############
+    kingd_6 = []
+    kingd6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output CGST':
+            kingd_6.append(be.totamt)
+            kingd6+=float(be.totamt)
+    context['kingd6'] = kingd6
     
     # Output CGST Tax RCM
     kingf_1=[]
@@ -37045,6 +37208,16 @@ def cash_flow_analyzer(request):
             kingf_5.append(be.totamt)
             kingf5+=float(be.totamt)
     context['kingf5'] = kingf5
+    #########################
+    kingf_6 = []
+    kingf6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output CGST Tax RCM':
+            kingf_6.append(be.totamt)
+            kingf6+=float(be.totamt)
+    context['kingf6'] = kingf6
     
     # Output CST 2%
     kingg_1=[]
@@ -37092,6 +37265,16 @@ def cash_flow_analyzer(request):
             kingg_5.append(be.totamt)
             kingg5+=float(be.totamt)
     context['kingg5'] = kingg5
+    ######################
+    kingg_6 = []
+    kingg6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output CST 2%':
+            kingg_6.append(be.totamt)
+            kingg6+=float(be.totamt)
+    context['kingg6'] = kingg6
     
     # Output IGST
     kingh_1=[]
@@ -37139,6 +37322,16 @@ def cash_flow_analyzer(request):
             kingh_5.append(be.totamt)
             kingh5+=float(be.totamt)
     context['kingh5'] = kingh5
+    ####################
+    kingh_6 = []
+    kingh6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output IGST':
+            kingh_6.append(be.totamt)
+            kingh6+=float(be.totamt)
+    context['kingh6'] = kingh6
     
     # Output IGST Tax RCM
     kingj_1=[]
@@ -37186,6 +37379,16 @@ def cash_flow_analyzer(request):
             kingj_5.append(be.totamt)
             kingj5+=float(be.totamt)
     context['kingj5'] = kingj5
+    #############################
+    kingj_6 = []
+    kingj6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output IGST Tax RCM':
+            kingj_6.append(be.totamt)
+            kingj6+=float(be.totamt)
+    context['kingj6'] = kingj6
     
     # Output Krishi Kalyan Cess
     kingk_1=[]
@@ -37233,6 +37436,16 @@ def cash_flow_analyzer(request):
             kingk_5.append(be.totamt)
             kingk5+=float(be.totamt)
     context['kingk5'] = kingk5
+    ####################
+    kingk_6 = []
+    kingk6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output Krishi Kalyan Cess':
+            kingk_6.append(be.totamt)
+            kingk6+=float(be.totamt)
+    context['kingk6'] = kingk6
     
     # Output Krishi Kalyan Cess RCM
     kingl_1=[]
@@ -37280,6 +37493,16 @@ def cash_flow_analyzer(request):
             kingl_5.append(be.totamt)
             kingl5+=float(be.totamt)
     context['kingl5'] = kingl5
+    #########################
+    kingl_6 = []
+    kingl6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output Krishi Kalyan Cess RCM':
+            kingl_6.append(be.totamt)
+            kingl6+=float(be.totamt)
+    context['kingl6'] = kingl6
     
     # Output Service Tax
     kingz_1=[]
@@ -37327,6 +37550,16 @@ def cash_flow_analyzer(request):
             kingz_5.append(be.totamt)
             kingz5+=float(be.totamt)
     context['kingz5'] = kingz5
+    #########################
+    kingz_6 = []
+    kingz6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output Service Tax':
+            kingz_6.append(be.totamt)
+            kingz6+=float(be.totamt)
+    context['kingz6'] = kingz6
     
     # Output Service Tax RCM
     kingx_1=[]
@@ -37374,6 +37607,16 @@ def cash_flow_analyzer(request):
             kingx_5.append(be.totamt)
             kingx5+=float(be.totamt)
     context['kingx5'] = kingx5
+    ############################
+    kingx_6 = []
+    kingx6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output Service Tax RCM':
+            kingx_6.append(be.totamt)
+            kingx6+=float(be.totamt)
+    context['kingx6'] = kingx6
     
     # Output SGST
     kingc_1=[]
@@ -37421,6 +37664,16 @@ def cash_flow_analyzer(request):
             kingc_5.append(be.totamt)
             kingc5+=float(be.totamt)
     context['kingc5'] = kingc5
+    ####################
+    kingc_6 = []
+    kingc6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output SGST':
+            kingc_6.append(be.totamt)
+            kingc6+=float(be.totamt)
+    context['kingc6'] = kingc6
     
     # Output SGST Tax RCM
     kingv_1=[]
@@ -37468,6 +37721,16 @@ def cash_flow_analyzer(request):
             kingv_5.append(be.totamt)
             kingv5+=float(be.totamt)
     context['kingv5'] = kingv5
+    #########################
+    kingv_6 = []
+    kingv6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output SGST Tax RCM':
+            kingv_6.append(be.totamt)
+            kingv6+=float(be.totamt)
+    context['kingv6'] = kingv6
     
     # Output VAT 14%
     kingb_1=[]
@@ -37515,6 +37778,16 @@ def cash_flow_analyzer(request):
             kingb_5.append(be.totamt)
             kingb5+=float(be.totamt)
     context['kingb5'] = kingb5
+    ##################
+    kingb_6 = []
+    kingb6 = 0.0
+    bilal6 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+    for be in bilal6:
+        if be.paymmethod=='Cash' and be.category1 == 'Output VAT 14%':
+            kingb_6.append(be.totamt)
+            kingb6+=float(be.totamt)
+    context['kingb6'] = kingb6
     
     # Output VAT 4%
     kingn_1=[]
