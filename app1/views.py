@@ -32736,6 +32736,18 @@ def cash_flow_analyzer(request):
             abc6+=float(b.amtreceived)
     context['abc6'] = abc6
     
+    abc_7=[]
+    abc7 = 0.0
+    billg = payment.objects.raw(
+        'select * from app1_payment where paymdate')
+    
+    for b in billg:
+        if b.pmethod=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abc_7.append(b.amtreceived)
+            abc7+=float(b.amtreceived)
+    context['abc7'] = abc7
+    
     # sales&receipts
     abd_1=[]
     abd1 = 0.0
@@ -32809,13 +32821,61 @@ def cash_flow_analyzer(request):
             abd6+=float(b.saaletotal)
     context['abd6'] = abd6
     
+    abd_7=[]
+    abd7 = 0.0
+    billag = salesrecpts.objects.raw(
+        'select * from app1_salesrecpts where saledate')
     
-    bank1 =0.0
-    for bb in billa:
-            if (bb.salepay=='Cash'):
-                data1_1.append(bb.totamt)
-                bank1+=float(bb.totamt)
-    context['bank1'] = bank1
+    for b in billag:
+        if b.salepay=='Cash':
+            #  and b.category1 == 'Bank Charges'
+            abd_7.append(b.saaletotal)
+            abd7+=float(b.saaletotal)
+    context['abd7'] = abd7
+    
+    # total cash inflows
+    x1 = int(abc1)+int(abd1)
+    abe1 = x1
+    print(abc1)
+    print(abd1)
+    print(abe1)
+    context['abe1'] = abe1
+    
+    x2 = int(abc2)+int(abd2)
+    abe2 = x2
+    context['abe2'] = abe2
+    
+    x3 = int(abc3)+int(abd3)
+    abe3 = x3
+    context['abe3'] = abe3
+    
+    x4 = int(abc4)+int(abd4)
+    abe4 = x4
+    context['abe4'] = abe4
+    
+    x5 = int(abc5)+int(abd5)
+    abe5 = x5
+    context['abe5'] = abe5
+    
+    x6 = int(abc6)+int(abd6)
+    abe6 = x6
+    context['abe6'] = abe6
+    
+    x7 = int(abc7)+int(abd7)
+    abe7 = x7
+    context['abe7'] = abe7
+    # pmonth = int(toda.strftime("%m"))-1
+    # tod2 = pmonth
+    # print(tod2)
+    
+    # bank1 =0.0
+    # billa=salesrecpts.objects.raw(
+    #     'select * from app1_salesrecpts where saaletotal')
+    # for bb in billa:
+    #         if (bb.salepay=='Cash'):
+    #             data1_1.append(bb.saaletotal)
+    #             bank1+=float(bb.saaletotal)
+    # context['bank1'] = bank1
     ##################################
     # cash outflows
     
@@ -32827,6 +32887,12 @@ def cash_flow_analyzer(request):
             date_2.append(b.totamt)
             date1+=float(b.totamt)
     context['date1'] = date1
+    
+    # for ban in ball:
+    #     if (ban.category1=='Advertising/Promotional'):
+    #         data_1.append(ban.totamt)
+    #         bat+=float(ban.totamt)
+    # context['bat'] = bat
     
     date_4=[]
     bill2 = expences.objects.raw(
