@@ -32864,6 +32864,111 @@ def cash_flow_analyzer(request):
     x7 = int(abc7)+int(abd7)
     abe7 = x7
     context['abe7'] = abe7
+    
+    #  cash balance
+    datex_1=[]
+    datex1=0.0
+    billz = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdate, todate, ])
+   
+    for b in billz:
+        if b.paymmethod=='Cash':
+            # and b.category1 == 'Advertising/Promotional'
+            datex_1.append(b.totamt)
+            datex1+=float(b.totamt)
+    
+    dataa1 = int(abe1)-int(datex1)
+    print(datex1)
+    print(dataa1)
+    context['datex1'] = datex1
+    context['dataa1'] = dataa1
+    
+    datex_2=[]
+    datex2=0.0
+    billz1 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem, todatem, ])
+   
+    for b in billz1:
+        if b.paymmethod=='Cash':
+            # and b.category1 == 'Advertising/Promotional'
+            datex_2.append(b.totamt)
+            datex2+=float(b.totamt)
+    
+    dataa2 = int(abe2)-int(datex2)
+    context['datex2'] = datex2
+    context['dataa2'] = dataa2
+    
+    datex_3=[]
+    datex3=0.0
+    billz2 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem1, todatem1, ])
+   
+    for b in billz2:
+        if b.paymmethod=='Cash':
+            # and b.category1 == 'Advertising/Promotional'
+            datex_3.append(b.totamt)
+            datex3+=float(b.totamt)
+    
+    dataa3 = int(abe3)-int(datex3)
+    context['datex3'] = datex3
+    context['dataa3'] = dataa3
+    
+    datex_4=[]
+    datex4=0.0
+    billz3 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem2, todatem2, ])
+   
+    for b in billz3:
+        if b.paymmethod=='Cash':
+            # and b.category1 == 'Advertising/Promotional'
+            datex_4.append(b.totamt)
+            datex4+=float(b.totamt)
+    
+    dataa4 = int(abe4)-int(datex4)
+    context['datex4'] = datex4
+    context['dataa4'] = dataa4
+    
+    datex_5=[]
+    datex5=0.0
+    billz4 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem3, todatem3, ])
+   
+    for b in billz4:
+        if b.paymmethod=='Cash':
+            # and b.category1 == 'Advertising/Promotional'
+            datex_5.append(b.totamt)
+            datex5+=float(b.totamt)
+    
+    dataa5 = int(abe5)-int(datex5)
+    context['datex5'] = datex5
+    context['dataa5'] = dataa5
+    
+    datex_6=[]
+    datex6=0.0
+    billz5 = expences.objects.raw(
+        'select * from app1_expences where paymdate between %s and %s', [fromdatem4, todatem4, ])
+   
+    for b in billz5:
+        if b.paymmethod=='Cash':
+            # and b.category1 == 'Advertising/Promotional'
+            datex_6.append(b.totamt)
+            datex6+=float(b.totamt)
+    
+    dataa6 = int(abe6)-int(datex6)
+    context['datex6'] = datex6
+    context['dataa6'] = dataa6
+    
+    dataa7 = int(dataa1)+int(dataa2)+int(dataa3)+int(dataa4)+int(dataa5)+int(dataa6)
+    print(dataa7)
+    context['dataa7'] = dataa7
+    
+    datex7 = int(datex1)+int(datex2)+int(datex3)+int(datex4)+int(datex5)+int(datex6)
+    print(datex7)
+    context['datex7'] = datex7
+    
+    # beginning cash balance
+    
+    
     # pmonth = int(toda.strftime("%m"))-1
     # tod2 = pmonth
     # print(tod2)
