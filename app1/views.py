@@ -33103,6 +33103,7 @@ def cash_flow_analyzer(request):
     abe7 = x7
     context['abe7'] = abe7
     
+    
     #  cash balance
     datex_1=[]
     datex1=0.0
@@ -33213,10 +33214,58 @@ def cash_flow_analyzer(request):
     print('cash dec expen=',datex8)
     print('cash dec bala=',dataa8)
     
+    # cash balance
+    datab1=int(dataa2)+int(abe1)
+    context['datab1'] = datab1
+    
+    datab2=int(dataa3)+int(abe2)
+    context['datab2'] = datab2
+    
+    datab3=int(dataa4)+int(abe3)
+    context['datab3'] = datab3
+    
+    datab4=int(dataa5)+int(abe4)
+    context['datab4'] = datab4
+    
+    datab5=int(dataa6)+int(abe5)
+    context['datab5'] = datab5
+    
+    datab6=int(dataa8)+int(abe6)
+    context['datab6'] = datab6
+    print('/////////////////=',datab6)
+    
+    datab7 = int(datab1)+int(datab2)+int(datab3)+int(datab4)+int(datab5)+int(datab6)
+    context['datab7'] = datab7
+    # ending cash balance
+    datac1=int(datab1)-int(datex1)
+    context['datac1'] = datac1
+    
+    datac2=int(datab2)-int(datex2)
+    context['datac2'] = datac2
+    
+    datac3=int(datab3)-int(datex3)
+    context['datac3'] = datac3
+    
+    datac4=int(datab4)-int(datex4)
+    context['datac4'] = datac4
+    
+    datac5=int(datab5)-int(datex5)
+    context['datac5'] = datac5
+    
+    datac6=int(datab6)-int(datex6)
+    context['datac6'] = datac6
+    
+    datac7 = int(datac1)+int(datac2)+int(datac3)+int(datac4)+int(datac5)+int(datac6)
+    print(datac7)
+    context['datac7'] = datac7
     
     dataa7 = int(dataa1)+int(dataa2)+int(dataa3)+int(dataa4)+int(dataa5)+int(dataa6)
     print(dataa7)
     context['dataa7'] = dataa7
+    
+    dataa71 = int(dataa1)+int(dataa2)+int(dataa3)+int(dataa4)+int(dataa5)+int(dataa6)+int(dataa8)
+    print(dataa71)
+    context['dataa71'] = dataa71
     
     datex7 = int(datex1)+int(datex2)+int(datex3)+int(datex4)+int(datex5)+int(datex6)
     print(datex7)
