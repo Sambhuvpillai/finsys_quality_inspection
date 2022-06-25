@@ -32559,6 +32559,8 @@ def deletestyle(request, customizeid):
 #     return render(request, 'app1/cash_flow_analyzer.html', context)
 @login_required(login_url='regcomp') 
 def cash_flow_analyzer(request):
+    
+        
     cmp1 = company.objects.get(id=request.session['uid'])
     context = {'cmp1': cmp1}
     data_1 = []
