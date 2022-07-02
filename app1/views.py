@@ -41956,10 +41956,347 @@ def cash_flow_sort(request):
         
         totalardebtors52 = 0.0
         for bus50 in creditnote:
-            if bus50.category1 == 'Leasehold Improvements':
+            if bus50.category1 == 'Vehicles':
                 data_1.append(bus.totamt)
                 totalardebtors52 += float(bus.totamt)
         context['accountreceivable52'] = totalardebtors52
+        
+        totalardebtors53 = 0.0
+        for bus51 in creditnote:
+            if bus51.category1 == 'CGST Payable':
+                data_1.append(bus.totamt)
+                totalardebtors53 += float(bus.totamt)
+        context['accountreceivable53'] = totalardebtors53
+        
+        totalardebtors54 = 0.0
+        for bus52 in creditnote:
+            if bus52.category1 == 'CST Payable':
+                data_1.append(bus.totamt)
+                totalardebtors54 += float(bus.totamt)
+        context['accountreceivable54'] = totalardebtors54
+        
+        totalardebtors55 = 0.0
+        for bus53 in creditnote:
+            if bus53.category1 == 'CST Suspense':
+                data_1.append(bus.totamt)
+                totalardebtors55 += float(bus.totamt)
+        context['accountreceivable55'] = totalardebtors55
+        
+        totalardebtors56 = 0.0
+        for bus54 in creditnote:
+            if bus54.category1 == 'GST Payable':
+                data_1.append(bus.totamt)
+                totalardebtors56 += float(bus.totamt)
+        context['accountreceivable56'] = totalardebtors56
+        
+        totalardebtors57 = 0.0
+        for bus55 in creditnote:
+            if bus55.category1 == 'GST Suspense':
+                data_1.append(bus.totamt)
+                totalardebtors57 += float(bus.totamt)
+        context['accountreceivable57'] = totalardebtors57
+        
+        totalardebtors58 = 0.0
+        for bus56 in creditnote:
+            if bus56.category1 == 'IGST Payable':
+                data_1.append(bus.totamt)
+                totalardebtors58 += float(bus.totamt)
+        context['accountreceivable58'] = totalardebtors58
+        
+        totalardebtors59 = 0.0
+        for bus57 in creditnote:
+            if bus57.category1 == 'Input CGST':
+                data_1.append(bus.totamt)
+                totalardebtors59 += float(bus.totamt)
+        context['accountreceivable59'] = totalardebtors59
+        
+        totalardebtors60 = 0.0
+        for bus58 in creditnote:
+            if bus58.category1 == 'Input CGST Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors60 += float(bus.totamt)
+        context['accountreceivable60'] = totalardebtors60
+        
+        totalardebtors61 = 0.0
+        for bus59 in creditnote:
+            if bus59.category1 == 'Input IGST':
+                data_1.append(bus.totamt)
+                totalardebtors61 += float(bus.totamt)
+        context['accountreceivable61'] = totalardebtors61
+        
+        totalardebtors62 = 0.0
+        for bus60 in creditnote:
+            if bus60.category1 == 'Input IGST Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors62 += float(bus.totamt)
+        context['accountreceivable62'] = totalardebtors62
+        
+        totalardebtors63 = 0.0
+        for bus61 in creditnote:
+            if bus61.category1 == 'Input Krishi Kalyan Cess':
+                data_1.append(bus.totamt)
+                totalardebtors63 += float(bus.totamt)
+        context['accountreceivable63'] = totalardebtors63
+        
+        totalardebtors64 = 0.0
+        for bus62 in creditnote:
+            if bus62.category1 == 'Input Service Tax':
+                data_1.append(bus.totamt)
+                totalardebtors64 += float(bus.totamt)
+        context['accountreceivable64'] = totalardebtors64
+        
+        totalardebtors65 = 0.0
+        for bus63 in creditnote:
+            if bus63.category1 == 'Input SGST':
+                data_1.append(bus.totamt)
+                totalardebtors65 += float(bus.totamt)
+        context['accountreceivable65'] = totalardebtors65
+        
+        totalardebtors66 = 0.0
+        for bus64 in creditnote:
+            if bus64.category1 == 'Input SGST Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors66 += float(bus.totamt)
+        context['accountreceivable66'] = totalardebtors66
+        
+        totalardebtors67 = 0.0
+        for bus65 in creditnote:
+            if bus65.category1 == 'Input VAT 14%':
+                data_1.append(bus.totamt)
+                totalardebtors67 += float(bus.totamt)
+        context['accountreceivable67'] = totalardebtors67
+        
+        totalardebtors68 = 0.0
+        for bus66 in creditnote:
+            if bus66.category1 == 'Input VAT 4%':
+                data_1.append(bus.totamt)
+                totalardebtors68 += float(bus.totamt)
+        context['accountreceivable68'] = totalardebtors68
+        
+        totalardebtors69 = 0.0
+        for bus67 in creditnote:
+            if bus67.category1 == 'Input VAT 5%':
+                data_1.append(bus.totamt)
+                totalardebtors69 += float(bus.totamt)
+        context['accountreceivable69'] = totalardebtors69
+        
+        totalardebtors70 = 0.0
+        for bus68 in creditnote:
+            if bus68.category1 == 'Krishi Kalyan Cess Payable':
+                data_1.append(bus.totamt)
+                totalardebtors70 += float(bus.totamt)
+        context['accountreceivable70'] = totalardebtors70
+        
+        totalardebtors71 = 0.0
+        for bus69 in creditnote:
+            if bus69.category1 == 'Krishi Kalyan Cess Suspense':
+                data_1.append(bus.totamt)
+                totalardebtors71 += float(bus.totamt)
+        context['accountreceivable71'] = totalardebtors71
+        
+        totalardebtors72 = 0.0
+        for bus70 in creditnote:
+            if bus70.category1 == 'Output CGST':
+                data_1.append(bus.totamt)
+                totalardebtors72 += float(bus.totamt)
+        context['accountreceivable72'] = totalardebtors72
+        
+        totalardebtors73 = 0.0
+        for bus71 in creditnote:
+            if bus71.category1 == 'Output CGST Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors73 += float(bus.totamt)
+        context['accountreceivable73'] = totalardebtors73
+        
+        totalardebtors74 = 0.0
+        for bus72 in creditnote:
+            if bus72.category1 == 'Output CST 2%':
+                data_1.append(bus.totamt)
+                totalardebtors74 += float(bus.totamt)
+        context['accountreceivable74'] = totalardebtors74
+        
+        totalardebtors75 = 0.0
+        for bus73 in creditnote:
+            if bus73.category1 == 'Output IGST':
+                data_1.append(bus.totamt)
+                totalardebtors75 += float(bus.totamt)
+        context['accountreceivable75'] = totalardebtors75
+        
+        totalardebtors76 = 0.0
+        for bus74 in creditnote:
+            if bus74.category1 == 'Output IGST Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors76 += float(bus.totamt)
+        context['accountreceivable76'] = totalardebtors76
+        
+        totalardebtors77 = 0.0
+        for bus75 in creditnote:
+            if bus75.category1 == 'Output Krishi Kalyan Cess':
+                data_1.append(bus.totamt)
+                totalardebtors77 += float(bus.totamt)
+        context['accountreceivable77'] = totalardebtors77
+        
+        totalardebtors78 = 0.0
+        for bus76 in creditnote:
+            if bus76.category1 == 'Output Krishi Kalyan Cess RCM':
+                data_1.append(bus.totamt)
+                totalardebtors78 += float(bus.totamt)
+        context['accountreceivable78'] = totalardebtors78
+        
+        totalardebtors79 = 0.0
+        for bus77 in creditnote:
+            if bus77.category1 == 'Output Service Tax':
+                data_1.append(bus.totamt)
+                totalardebtors79 += float(bus.totamt)
+        context['accountreceivable79'] = totalardebtors79
+        
+        totalardebtors80 = 0.0
+        for bus78 in creditnote:
+            if bus78.category1 == 'Output Service Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors80 += float(bus.totamt)
+        context['accountreceivable80'] = totalardebtors80
+        
+        totalardebtors81 = 0.0
+        for bus79 in creditnote:
+            if bus79.category1 == 'Output SGST':
+                data_1.append(bus.totamt)
+                totalardebtors81 += float(bus.totamt)
+        context['accountreceivable81'] = totalardebtors81
+        
+        totalardebtors82 = 0.0
+        for bus80 in creditnote:
+            if bus80.category1 == 'Output SGST Tax RCM':
+                data_1.append(bus.totamt)
+                totalardebtors82 += float(bus.totamt)
+        context['accountreceivable82'] = totalardebtors82
+        
+        totalardebtors83 = 0.0
+        for bus81 in creditnote:
+            if bus81.category1 == 'Output VAT 14%':
+                data_1.append(bus.totamt)
+                totalardebtors83 += float(bus.totamt)
+        context['accountreceivable83'] = totalardebtors83
+        
+        totalardebtors84 = 0.0
+        for bus82 in creditnote:
+            if bus82.category1 == 'Output VAT 4%':
+                data_1.append(bus.totamt)
+                totalardebtors84 += float(bus.totamt)
+        context['accountreceivable84'] = totalardebtors84
+        
+        totalardebtors85 = 0.0
+        for bus83 in creditnote:
+            if bus83.category1 == 'Output VAT 5%':
+                data_1.append(bus.totamt)
+                totalardebtors85 += float(bus.totamt)
+        context['accountreceivable85'] = totalardebtors85
+        
+        totalardebtors86 = 0.0
+        for bus84 in creditnote:
+            if bus84.category1 == 'Service Tax Payable':
+                data_1.append(bus.totamt)
+                totalardebtors86 += float(bus.totamt)
+        context['accountreceivable86'] = totalardebtors86
+        
+        totalardebtors87 = 0.0
+        for bus85 in creditnote:
+            if bus85.category1 == 'Service Tax Suspense':
+                data_1.append(bus.totamt)
+                totalardebtors87 += float(bus.totamt)
+        context['accountreceivable87'] = totalardebtors87
+        
+        totalardebtors88 = 0.0
+        for bus86 in creditnote:
+            if bus86.category1 == 'SGST Payable':
+                data_1.append(bus.totamt)
+                totalardebtors88 += float(bus.totamt)
+        context['accountreceivable88'] = totalardebtors88
+        
+        totalardebtors89 = 0.0
+        for bus87 in creditnote:
+            if bus87.category1 == 'Swachh Bharat Cess Payable':
+                data_1.append(bus.totamt)
+                totalardebtors89 += float(bus.totamt)
+        context['accountreceivable89'] = totalardebtors89
+        
+        totalardebtors90 = 0.0
+        for bus88 in creditnote:
+            if bus88.category1 == 'Swachh Bharat Cess Suspense':
+                data_1.append(bus.totamt)
+                totalardebtors90 += float(bus.totamt)
+        context['accountreceivable90'] = totalardebtors90
+        
+        totalardebtors91 = 0.0
+        for bus89 in creditnote:
+            if bus89.category1 == 'TDS Payable':
+                data_1.append(bus.totamt)
+                totalardebtors91 += float(bus.totamt)
+        context['accountreceivable91'] = totalardebtors91
+        
+        totalardebtors92 = 0.0
+        for bus90 in creditnote:
+            if bus90.category1 == 'VAT Suspense':
+                data_1.append(bus.totamt)
+                totalardebtors92 += float(bus.totamt)
+        context['accountreceivable92'] = totalardebtors92
+        
+        totalardebtors93 = 0.0
+        for bus91 in creditnote:
+            if bus91.category1 == 'Opening Balance Equity':
+                data_1.append(bus.totamt)
+                totalardebtors93 += float(bus.totamt)
+        context['accountreceivable93'] = totalardebtors93
+        
+        totalardebtors94 = 0.0
+        for bus92 in creditnote:
+            if bus92.category1 == 'Retained Earnings':
+                data_1.append(bus.totamt)
+                totalardebtors94 += float(bus.totamt)
+        context['accountreceivable94'] = totalardebtors94
+        
+        totalardebtors95 = 0.0
+        for bus93 in creditnote:
+            if bus93.category1 == 'Billable Expense Income':
+                data_1.append(bus.totamt)
+                totalardebtors95 += float(bus.totamt)
+        context['accountreceivable95'] = totalardebtors95
+        
+        totalardebtors96 = 0.0
+        for bus94 in creditnote:
+            if bus94.category1 == 'Consulting Income':
+                data_1.append(bus.totamt)
+                totalardebtors96 += float(bus.totamt)
+        context['accountreceivable96'] = totalardebtors96
+        
+        totalardebtors97 = 0.0
+        for bus95 in creditnote:
+            if bus95.category1 == 'Product Sales':
+                data_1.append(bus.totamt)
+                totalardebtors97 += float(bus.totamt)
+        context['accountreceivable97'] = totalardebtors97
+        
+        totalardebtors98 = 0.0
+        for bus96 in creditnote:
+            if bus96.category1 == 'Sales':
+                data_1.append(bus.totamt)
+                totalardebtors98 += float(bus.totamt)
+        context['accountreceivable98'] = totalardebtors98
+        
+        totalardebtors99 = 0.0
+        for bus97 in creditnote:
+            if bus97.category1 == 'Sales - Hardware':
+                data_1.append(bus.totamt)
+                totalardebtors99 += float(bus.totamt)
+        context['accountreceivable99'] = totalardebtors99
+        
+        totalardebtors100 = 0.0
+        for bus98 in creditnote:
+            if bus98.category1 == 'Sales - Software':
+                data_1.append(bus.totamt)
+                totalardebtors100 += float(bus.totamt)
+        context['accountreceivable100'] = totalardebtors100
+        
     
         
     return render(request, 'app1/cash_flow_sort.html', context)
