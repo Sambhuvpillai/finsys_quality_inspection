@@ -567,7 +567,7 @@ class expences(models.Model):
     expencesid = models.AutoField(('EXPENCEID'), primary_key=True)
     cid = models.ForeignKey(company, on_delete=models.CASCADE)
     payee = models.CharField(max_length=100)
-    paymdate = models.CharField(max_length=100)
+    paymdate = models.DateField(max_length=100)
     paymmethod = models.CharField(max_length=100)
     refno = models.CharField(max_length=100)
     totamt = models.CharField(max_length=100)

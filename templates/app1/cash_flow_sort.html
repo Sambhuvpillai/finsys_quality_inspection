@@ -75,6 +75,7 @@
                                 <th class="text-center">TOTAL</th>
                             </tr>
                         </thead>
+            {% comment %} {% if filmeth ==  Today %} {% endcomment %}
                         <tbody>
 
                             <tr>
@@ -292,19 +293,19 @@
                                     <h6><b>Advertising/Promotional</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" value="" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="0.0">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="0.0">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="0.0">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;"  value="0.0">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;"  value="0.0">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable}}">
@@ -318,7 +319,7 @@
                                     <h6><b>Bank Charges</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
@@ -2595,10 +2596,10 @@
                                     <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable85}}">
+                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable86}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable85}}">
+                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable86}}">
                                 </td>
                             </tr>
                             <tr>
@@ -2621,10 +2622,10 @@
                                     <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable86}}">
+                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable87}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable86}}">
+                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable87}}">
                                 </td>
                             </tr>
                             <tr>
@@ -2647,10 +2648,10 @@
                                     <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable87}}">
+                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable88}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable87}}">
+                                    <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable88}}">
                                 </td>
                             </tr>
                             <tr>
@@ -3841,6 +3842,7 @@
                             </tr>
                         </tbody>
                     </table>
+        {% comment %} {% endif %} {% endcomment %}
                 </div>
             </div>
         </div>

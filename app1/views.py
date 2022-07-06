@@ -41523,6 +41523,14 @@ def cash_flow_sort(request):
     if filmeth == 'Today':
         fromdate = tod
         todate = tod
+        # print(fromdate,todate)
+        # md=expences.objects.filter(paymdate__range=[fromdate, todate]).order_by('paymdate')
+        # explp=list(md)
+        # print(md.category1)
+        # context['exp'] = explp
+        # cat1=[x.category1 for x in md]
+        # print(category1)
+        
         
            # Account Receivable(Debtors)
         
@@ -41577,7 +41585,7 @@ def cash_flow_sort(request):
         
 
         # Account Receivable(Debtors)
-    if filmeth == 'Today':
+    if filmeth == 'Today' :
         invoi = expences.objects.raw(
         'select * from app1_expences where paymdate between %s and %s', [fromdate, todate, ])
         totalardebtors = 0.0
@@ -42484,6 +42492,7 @@ def cash_flow_sort(request):
         
     
         
+    
     return render(request, 'app1/cash_flow_sort.html', context)
     
 # quality management/quality inspection
