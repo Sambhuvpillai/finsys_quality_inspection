@@ -75,7 +75,7 @@
                                 <th class="text-center">TOTAL</th>
                             </tr>
                         </thead>
-            {% comment %} {% if filmeth ==  Today %} {% endcomment %}
+            {% if reportperiod1 ==  Today %}
                         <tbody>
 
                             <tr>
@@ -293,19 +293,19 @@
                                     <h6><b>Advertising/Promotional</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="0.0">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}" value="{{test}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="0.0">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="0.0">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;"  value="0.0">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;"  value="0.0">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable}}">
@@ -319,19 +319,19 @@
                                     <h6><b>Bank Charges</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;"value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable1}}">
@@ -345,19 +345,19 @@
                                     <h6><b>Business Licenses and Permits</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable2}}">
@@ -371,19 +371,19 @@
                                     <h6><b>Charitable Contributions</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable3}}">
@@ -397,19 +397,19 @@
                                     <h6><b>Computer and Internet Expense</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;"  value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable4}}">
@@ -423,19 +423,19 @@
                                     <h6><b>Continuing Education</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;"  value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable5}}">
@@ -449,19 +449,19 @@
                                     <h6><b>Depreciation Expense</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable6}}">
@@ -475,19 +475,19 @@
                                     <h6><b>Dues and Subscriptions</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;"  value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control tax" name="tax1" id="tax1" style="background-color: #2f516f;" value="{{accountreceivable7}}">
@@ -501,16 +501,16 @@
                                     <h6><b>Housekeeping Charges</b></h6>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="hsn1" id="hsn1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;">
+                                    <input type="text" class="form-control" name="description1" id="description1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="">
+                                    <input type="text" class="form-control qty" name="qty1" id="qty1" style="background-color: #2f516f;" step="any" value="{{null}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="">
+                                    <input type="text" class="form-control price" name="price1" id="price1" style="background-color: #2f516f;" value="{{null}}">
                                 </td>
                                 <td>
                                     <input type="text" class="form-control total" name="total1" id="total1" style="background-color: #2f516f;" value="">
@@ -3842,7 +3842,7 @@
                             </tr>
                         </tbody>
                     </table>
-        {% comment %} {% endif %} {% endcomment %}
+        {% endif %}
                 </div>
             </div>
         </div>

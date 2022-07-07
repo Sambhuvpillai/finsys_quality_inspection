@@ -41585,7 +41585,7 @@ def cash_flow_sort(request):
         
 
         # Account Receivable(Debtors)
-    if filmeth == 'Today' :
+    if filmeth == 'Today' or filmeth == 'This month' :
         invoi = expences.objects.raw(
         'select * from app1_expences where paymdate between %s and %s', [fromdate, todate, ])
         totalardebtors = 0.0
@@ -41593,6 +41593,8 @@ def cash_flow_sort(request):
         totalardebtors1 = 0.0
         print(invoi)       
         print("hai")
+        null = 0.0
+        context['null'] = null
         
         
         creditnote = expences.objects.raw('select * from app1_expences where paymdate between %s and %s',
@@ -42486,6 +42488,14 @@ def cash_flow_sort(request):
                 data_1.append(bus.totamt)
                 totalardebtors126 += float(bus.totamt)
         context['accountreceivable126'] = totalardebtors126
+        
+    # elif filmeth == 'This month':
+    #     invoi = expences.objects.raw(
+    #     'select * from app1_expences where paymdate between %s and %s', [fromdate, todate, ])
+    #     test = 567
+    #     context['test'] = test
+        
+    # context['filmeth'] = filmeth   
         
 
         
