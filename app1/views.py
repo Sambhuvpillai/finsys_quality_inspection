@@ -42510,7 +42510,7 @@ def cash_flow_sort(request):
                 data_1.append(ad.totamt)
                 totalardebtors += float(ad.totamt)
         context['accountreceivable'] = totalardebtors
-        mon=filter()
+        
         
 
         
