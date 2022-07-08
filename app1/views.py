@@ -12,6 +12,7 @@ import json
 from django.http.response import JsonResponse
 from django.contrib.auth.decorators import login_required
 import itertools
+import pandas as pd
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -42495,7 +42496,21 @@ def cash_flow_sort(request):
     #     test = 567
     #     context['test'] = test
         
-    # context['filmeth'] = filmeth   
+    # context['filmeth'] = filmeth 
+    elif filmeth == 'Custom':
+        fromdate = request.POST['fper']
+        todate = request.POST['tper']
+        print('fper=',fromdate)  
+        print('tper=',todate)  
+        creditnote = expences.objects.raw('select * from app1_expences where paymdate between %s and %s',
+                                            [fromdate, todate, ])    
+        totalardebtors = 0.0
+        for ad in creditnote:
+            if ad.category1 == 'Advertising/Promotional':
+                data_1.append(ad.totamt)
+                totalardebtors += float(ad.totamt)
+        context['accountreceivable'] = totalardebtors
+        mon=filter()
         
 
         
