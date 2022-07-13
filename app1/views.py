@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 import itertools
 import pandas as pd
 from django.views.decorators.csrf import csrf_exempt
-
+import datetime
 
 def index(request):
     return render(request, 'app1/index.html')
@@ -32569,7 +32569,7 @@ def cash_flow_analyzer(request):
     tod = toda.strftime("%Y-%m-%d")
     balance = expences.objects.order_by('paymmethod')
     ball = expences.objects.order_by('category1')
-    tody = datetime.now()
+    # tody = datetime.now()
     tod1 = toda.strftime("%B")
     fromdate = toda.strftime("%Y-%m-01")
     todate = toda.strftime("%Y-%m-%d")
@@ -41521,6 +41521,7 @@ def cash_flow_sort(request):
     tod1 = toda.strftime("%B")
     context['tod1'] = tod1
     filmeth = request.POST['reportperiod1']
+    
     if filmeth == 'Today':
         fromdate = tod
         todate = tod
@@ -42498,10 +42499,302 @@ def cash_flow_sort(request):
         
     # context['filmeth'] = filmeth 
     elif filmeth == 'Custom':
+        ##########################
+        fromdate = toda.strftime("%Y-%m-01")
+    todate = toda.strftime("%Y-%m-%d")
+    
+    pmonth = int(toda.strftime("%m"))-1
+    if pmonth == 0:
+        pmonth = 12
+    elif pmonth == -1:
+        pmonth = 11
+    elif pmonth == -2:
+        pmonth = 10
+    elif pmonth == -3:
+        pmonth = 9
+    elif pmonth == -4:
+        pmonth = 8
+    elif pmonth == -5:
+        pmonth = 7
+    elif pmonth == -6:
+        pmonth = 6
+    elif pmonth == -7:
+        pmonth = 5
+    elif pmonth == -8:
+        pmonth = 4
+    elif pmonth == -9:
+        pmonth = 3
+    elif pmonth == -10:
+        pmonth = 2
+    elif pmonth == -11:
+        pmonth = 1
+    else:
+        pmonth = pmonth
+    tod2 = pmonth
+    print(tod2)
+    
+    if int(toda.strftime("%m")) <= 6 :
+        if tod2 == 12 or tod2 == 11 or tod2 == 10 or tod2 == 9 or tod2 == 8:
+            fromdatem = f'{int(toda.strftime("%Y"))-1}-{pmonth}-01'
+            print("str",fromdate)
+            print("str",todate)
+            print("str",fromdatem)
+            todatem = f'{int(toda.strftime("%Y"))-1}-{pmonth}-31'
+        else:   
+            fromdatem = f'{toda.strftime("%Y")}-0{pmonth}-01'
+            print("str",fromdate)
+            print("str",todate)
+            print("str",fromdatem)
+            todatem = f'{toda.strftime("%Y")}-0{pmonth}-31'
+    else:   
+        fromdatem = f'{toda.strftime("%Y")}-0{pmonth}-01'
+        print("str",fromdate)
+        print("str",todate)
+        print("str",fromdatem)
+        todatem = f'{toda.strftime("%Y")}-0{pmonth}-31'
+   
+    
+    pmonth1 = int(toda.strftime("%m")) - 2
+    if pmonth1 == 0:
+        pmonth1 = 12
+    elif pmonth1 == -1:
+        pmonth1 = 11
+    elif pmonth1 == -2:
+        pmonth1 = 10
+    elif pmonth1 == -3:
+        pmonth1 = 9
+    elif pmonth1 == -4:
+        pmonth1 = 8
+    elif pmonth1 == -5:
+        pmonth1 = 7
+    elif pmonth1 == -6:
+        pmonth1 = 6
+    elif pmonth1 == -7:
+        pmonth1 = 5
+    elif pmonth1 == -8:
+        pmonth1 = 4
+    elif pmonth1 == -9:
+        pmonth1 = 3
+    elif pmonth1 == -10:
+        pmonth1 = 2
+    elif pmonth1 == -11:
+        pmonth1 = 1
+    else:
+        pmonth1 = pmonth1
+    tod3 = pmonth1
+    print(tod3)
+    if int(toda.strftime("%m")) <= 6 :
+        if tod3 == 12 or tod3 == 11 or tod3 == 10 or tod3 == 9 or tod3 == 8:
+            fromdatem1 = f'{int(toda.strftime("%Y"))-1}-{pmonth1}-01'
+            todatem1 = f'{int(toda.strftime("%Y"))-1}-{pmonth1}-31'
+        else:   
+            fromdatem1 = f'{toda.strftime("%Y")}-0{pmonth1}-01'
+            todatem1 = f'{toda.strftime("%Y")}-0{pmonth1}-31'
+    else:   
+        fromdatem1 = f'{toda.strftime("%Y")}-0{pmonth1}-01'
+        todatem1 = f'{toda.strftime("%Y")}-0{pmonth1}-31'
+    
+    
+    pmonth2 = int(toda.strftime("%m")) - 3
+    if pmonth2 == 0:
+        pmonth2 = 12
+    elif pmonth2 == -1:
+        pmonth2 = 11
+    elif pmonth2 == -2:
+        pmonth2 = 10
+    elif pmonth2 == -3:
+        pmonth2 = 9
+    elif pmonth2 == -4:
+        pmonth2 = 8
+    elif pmonth2 == -5:
+        pmonth2 = 7
+    elif pmonth2 == -6:
+        pmonth2 = 6
+    elif pmonth2 == -7:
+        pmonth2 = 5
+    elif pmonth2 == -8:
+        pmonth2 = 4
+    elif pmonth2 == -9:
+        pmonth2 = 3
+    elif pmonth2 == -10:
+        pmonth2 = 2
+    elif pmonth2 == -11:
+        pmonth2 = 1
+    else:
+        pmonth2 = pmonth2
+    tod4 = pmonth2
+    print(tod4)
+    if int(toda.strftime("%m")) <= 6 :
+        if tod4 == 12 or tod4 == 11 or tod4 == 10 or tod4 == 9 or tod4 == 8:
+            fromdatem2 = f'{int(toda.strftime("%Y"))-1}-{pmonth2}-01'
+            todatem2 = f'{int(toda.strftime("%Y"))-1}-{pmonth2}-31'
+        else:   
+            fromdatem2 = f'{toda.strftime("%Y")}-0{pmonth2}-01'
+            todatem2 = f'{toda.strftime("%Y")}-0{pmonth2}-31'
+    else:   
+        fromdatem2 = f'{toda.strftime("%Y")}-0{pmonth2}-01'
+        todatem2 = f'{toda.strftime("%Y")}-0{pmonth2}-31'
+    
+    pmonth3 = int(toda.strftime("%m")) - 4
+    if pmonth3 == 0:
+        pmonth3 = 12
+    elif pmonth3 == -1:
+        pmonth3 = 11
+    elif pmonth3 == -2:
+        pmonth3 = 10
+    elif pmonth3 == -3:
+        pmonth3 = 9
+    elif pmonth3 == -4:
+        pmonth3 = 8
+    elif pmonth3 == -5:
+        pmonth3 = 7
+    elif pmonth3 == -6:
+        pmonth3 = 6
+    elif pmonth3 == -7:
+        pmonth3 = 5
+    elif pmonth3 == -8:
+        pmonth3 = 4
+    elif pmonth3 == -9:
+        pmonth3 = 3
+    elif pmonth3 == -10:
+        pmonth3 = 2
+    elif pmonth3 == -11:
+        pmonth3 = 1
+    else:
+        pmonth3 = pmonth3
+    tod5 = pmonth3
+    print(tod5)
+    if int(toda.strftime("%m")) <= 6 :
+        if tod5 == 12 or tod5 == 11 or tod5 == 10 or tod5 == 9 or tod5 == 8:
+            fromdatem3 = f'{int(toda.strftime("%Y"))-1}-{pmonth3}-01'
+            todatem3 = f'{int(toda.strftime("%Y"))-1}-{pmonth3}-31'
+        else:   
+            fromdatem3 = f'{toda.strftime("%Y")}-0{pmonth3}-01'
+            todatem3 = f'{toda.strftime("%Y")}-0{pmonth3}-31'
+    else:   
+        fromdatem3 = f'{toda.strftime("%Y")}-0{pmonth3}-01'
+        todatem3 = f'{toda.strftime("%Y")}-0{pmonth3}-31'
+    
+    
+    # pyear = int(toda.strftime("%Y")) - 1
+    # fromdate = f'{pyear}-03-01'
+    # todate = f'{toda.strftime("%Y")}-03-31'
+    pmonth4 = int(toda.strftime("%m")) - 5
+    print(pmonth4)
+    if pmonth4 == 0:
+        pmonth4 = 12
+    elif pmonth4 == -1:
+        pmonth4 = 11
+    elif pmonth4 == -2:
+        pmonth4 = 10
+    elif pmonth4 == -3:
+        pmonth4 = 9
+    elif pmonth4 == -4:
+        pmonth4 = 8
+    elif pmonth4 == -5:
+        pmonth4 = 7
+    elif pmonth4 == -6:
+        pmonth4 = 6
+    elif pmonth4 == -7:
+        pmonth4 = 5
+    elif pmonth4 == -8:
+        pmonth4 = 4
+    elif pmonth4 == -9:
+        pmonth4 = 3
+    elif pmonth4 == -10:
+        pmonth4 = 2
+    elif pmonth4 == -11:
+        pmonth4 = 1
+    else:
+        pmonth4 = pmonth4
+    print(pmonth4)
+    tod6 = pmonth4
+    if int(toda.strftime("%m")) <= 6 :
+        if tod6 == 12 or tod6 == 11 or tod6 == 10 or tod6 == 9 or tod6 == 8:
+            fromdatem4 = f'{int(toda.strftime("%Y"))-1}-{pmonth4}-01'
+            todatem4 = f'{int(toda.strftime("%Y"))-1}-{pmonth4}-31'
+        else:   
+            fromdatem4 = f'{toda.strftime("%Y")}-0{pmonth4}-01'
+            todatem4 = f'{toda.strftime("%Y")}-0{pmonth4}-31'
+    else:   
+        fromdatem4 = f'{toda.strftime("%Y")}-0{pmonth4}-01'
+        todatem4 = f'{toda.strftime("%Y")}-0{pmonth4}-31'
+        
+    pmonth5 = int(toda.strftime("%m")) - 6
+    print(pmonth5)
+    if pmonth5 == 0:
+        pmonth5 = 12
+    elif pmonth5 == -1:
+        pmonth5 = 11
+    elif pmonth5 == -2:
+        pmonth5 = 10
+    elif pmonth5 == -3:
+        pmonth5 = 9
+    elif pmonth5 == -4:
+        pmonth5 = 8
+    elif pmonth5 == -5:
+        pmonth5 = 7
+    elif pmonth5 == -6:
+        pmonth5 = 6
+    elif pmonth5 == -7:
+        pmonth5 = 5
+    elif pmonth5 == -8:
+        pmonth5 = 4
+    elif pmonth5 == -9:
+        pmonth5 = 3
+    elif pmonth5 == -10:
+        pmonth5 = 2
+    elif pmonth5 == -11:
+        pmonth5 = 1
+    else:
+        pmonth5 = pmonth5
+        
+    print(pmonth5)
+    tod7 = pmonth5
+    print(tod7)
+    if int(toda.strftime("%m")) <= 6 :
+        if tod7 == 12 or tod7 == 11 or tod7 == 10 or tod7 == 9 or tod7 == 8:
+            year = int(toda.strftime("%Y"))-1
+            print('year=',year)
+            fromdatem5 = f'{int(toda.strftime("%Y"))-1}-{pmonth5}-01'
+            todatem5 = f'{int(toda.strftime("%Y"))-1}-{pmonth5}-31'
+            print("str",fromdatem5)
+            print("str",todatem5)
+            print("str",fromdatem5)
+        
+        else:
+            fromdatem5 = f'{toda.strftime("%Y")}-0{pmonth5}-01'
+            todatem5 = f'{toda.strftime("%Y")}-0{pmonth5}-31'  
+    else: 
+        fromdatem5 = f'{toda.strftime("%Y")}-0{pmonth5}-01'
+        todatem5 = f'{toda.strftime("%Y")}-0{pmonth5}-31' 
+        
+    
+    
+        
+        
+        
+        
+        
+        ########################
         fromdate = request.POST['fper']
         todate = request.POST['tper']
-        print('fper=',fromdate)  
-        print('tper=',todate)  
+        # fper = datetime.date("%Y-%m-%d")
+        datem = datetime.datetime.strptime(fromdate,"%Y-%m-%d")
+        todatem = datetime.datetime.strptime(todate,"%Y-%m-%d")
+        print('fper=',datem.month)  
+        print('tper=',todatem.month) 
+        for i in range(datem.month,todatem.month+1):
+            print(i)
+            creditnote1 = expences.objects.raw('select * from app1_expences where paymdate between %s and %s',
+                                            [ f'{toda.strftime("%Y")}-0{datem.month}-01', f'{toda.strftime("%Y")}-0{datem.month}-31', ]) 
+            tota1 = 0.0
+            for ad in creditnote1:
+                if ad.category1 == 'Advertising/Promotional':
+                    data_1.append(ad.totamt)
+                    tota1 += float(ad.totamt)
+            context['tota1'] = tota1
+            
         creditnote = expences.objects.raw('select * from app1_expences where paymdate between %s and %s',
                                             [fromdate, todate, ])    
         totalardebtors = 0.0
