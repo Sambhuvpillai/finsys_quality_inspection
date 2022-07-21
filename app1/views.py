@@ -32839,6 +32839,266 @@ def cash_flow_analyzer(request):
     else: 
         fromdatem5 = f'{toda.strftime("%Y")}-0{pmonth5}-01'
         todatem5 = f'{toda.strftime("%Y")}-0{pmonth5}-31' 
+#####################################################################################################
+        
+    pmonth6 = int(toda.strftime("%m")) - 7
+    print(pmonth5)
+    if pmonth6 == 0:
+        pmonth6 = 12
+    elif pmonth6 == -1:
+        pmonth6 = 11
+    elif pmonth6 == -2:
+        pmonth6 = 10
+    elif pmonth6 == -3:
+        pmonth6 = 9
+    elif pmonth6 == -4:
+        pmonth6 = 8
+    elif pmonth6 == -5:
+        pmonth6 = 7
+    elif pmonth6 == -6:
+        pmonth6 = 6
+    elif pmonth6 == -7:
+        pmonth6 = 5
+    elif pmonth6 == -8:
+        pmonth6 = 4
+    elif pmonth6 == -9:
+        pmonth6 = 3
+    elif pmonth6 == -10:
+        pmonth6 = 2
+    elif pmonth6 == -11:
+        pmonth6 = 1
+    else:
+        pmonth6 = pmonth6
+        
+    print(int(toda.strftime("%m")) - 7,'##########################################')
+    tod8 = pmonth6
+    print(tod8)
+    if int(toda.strftime("%m")) - 7 == 0 or int(toda.strftime("%m")) - 7 == -1 or int(toda.strftime("%m")) - 7 == -2 or int(toda.strftime("%m")) - 7 == -3 or int(toda.strftime("%m")) - 7 == -4 or int(toda.strftime("%m")) - 7 == -5  or int(toda.strftime("%m")) -7 == -6  or int(toda.strftime("%m")) - 7 == -7  or int(toda.strftime("%m")) - 7 == -8 or int(toda.strftime("%m")) - 7 == -9 or int(toda.strftime("%m")) - 7 == -10  or int(toda.strftime("%m")) - 7 == -11  or int(toda.strftime("%m")) - 7 == -12:
+        year = int(toda.strftime("%Y"))-1
+        print('year=',year)
+        fromdatem6 = f'{int(toda.strftime("%Y"))-1}-{pmonth6}-01'
+        todatem6 = f'{int(toda.strftime("%Y"))-1}-{pmonth6}-31'
+        print("################################")
+        print("str",fromdatem6)
+        print("str",todatem6)
+        print("str",fromdatem6)
+        print("################################")
+    
+        
+    else: 
+        fromdatem6 = f'{toda.strftime("%Y")}-{pmonth6}-01'
+        todatem6 = f'{toda.strftime("%Y")}-{pmonth6}-31'
+        print("################################")
+        print("str",fromdatem6)
+        print("str",todatem6)
+        print("str",fromdatem6)
+        print("################################") 
+        
+    pmonth7 = int(toda.strftime("%m")) - 8
+    print(pmonth7)
+    if pmonth7 == 0:
+        pmonth7 = 12
+    elif pmonth7 == -1:
+        pmonth7 = 11
+    elif pmonth7 == -2:
+        pmonth7 = 10
+    elif pmonth7 == -3:
+        pmonth7 = 9
+    elif pmonth7 == -4:
+        pmonth7 = 8
+    elif pmonth7 == -5:
+        pmonth7 = 7
+    elif pmonth7 == -6:
+        pmonth7 = 6
+    elif pmonth7 == -7:
+        pmonth7 = 5
+    elif pmonth7 == -8:
+        pmonth7 = 4
+    elif pmonth7 == -9:
+        pmonth7 = 3
+    elif pmonth7 == -10:
+        pmonth7 = 2
+    elif pmonth7 == -11:
+        pmonth7 = 1
+    else:
+        pmonth7 = pmonth7
+        
+    print(pmonth7)
+    tod9 = pmonth7
+    print(tod9)
+    if int(toda.strftime("%m")) - 8 == -1 or int(toda.strftime("%m")) - 8 == -2 or int(toda.strftime("%m")) - 8 == -3 or int(toda.strftime("%m")) - 8 == -4 or int(toda.strftime("%m")) - 8 == -5  or int(toda.strftime("%m")) -8 == -6  or int(toda.strftime("%m")) - 8 == -7  or int(toda.strftime("%m")) - 8 == -8 or int(toda.strftime("%m")) - 8 == -9 or int(toda.strftime("%m")) - 8 == -10  or int(toda.strftime("%m")) - 8 == -11  or int(toda.strftime("%m")) - 8 == -12:
+    
+    
+    
+        
+        year = int(toda.strftime("%Y"))-1
+        print('year=',year)
+        fromdatem7 = f'{int(toda.strftime("%Y"))-1}-{pmonth7}-01'
+        todatem7 = f'{int(toda.strftime("%Y"))-1}-{pmonth7}-31'
+        print("################################")
+        print("str",fromdatem7)
+        print("str",todatem7)
+        print("str",fromdatem7)
+        print("################################")
+        
+       
+    else: 
+        fromdatem7 = f'{toda.strftime("%Y")}-0{pmonth7}-01'
+        todatem7 = f'{toda.strftime("%Y")}-0{pmonth7}-31'
+        
+    pmonth8 = int(toda.strftime("%m")) - 9
+    print(pmonth8)
+    if pmonth8 == 0:
+        pmonth8 = 12
+    elif pmonth8 == -1:
+        pmonth8 = 11
+    elif pmonth8 == -2:
+        pmonth8 = 10
+    elif pmonth8 == -3:
+        pmonth8 = 9
+    elif pmonth8 == -4:
+        pmonth8 = 8
+    elif pmonth8 == -5:
+        pmonth8 = 7
+    elif pmonth8 == -6:
+        pmonth8 = 6
+    elif pmonth8 == -7:
+        pmonth8 = 5
+    elif pmonth8 == -8:
+        pmonth8 = 4
+    elif pmonth8 == -9:
+        pmonth8 = 3
+    elif pmonth8 == -10:
+        pmonth8 = 2
+    elif pmonth8 == -11:
+        pmonth8 = 1
+    else:
+        pmonth8 = pmonth8
+        
+    print(pmonth8)
+    print('#########################',int(toda.strftime("%m")) - 9)
+    tod10 = pmonth8
+    print(tod10)
+    if int(toda.strftime("%m")) - 9 == -1 or int(toda.strftime("%m")) - 9 == -2 or int(toda.strftime("%m")) - 9 == -3 or int(toda.strftime("%m")) - 9 == -4 or int(toda.strftime("%m")) - 9 == -5  or int(toda.strftime("%m")) - 9 == -6  or int(toda.strftime("%m")) - 9 == -7  or int(toda.strftime("%m")) - 9 == -8 or int(toda.strftime("%m")) - 9 == -9 or int(toda.strftime("%m")) - 9 == -10  or int(toda.strftime("%m")) - 9 == -11  or int(toda.strftime("%m")) - 9 == -12:
+        
+        
+        year = int(toda.strftime("%Y"))-1
+        print('year=',year)
+        fromdatem8 = f'{int(toda.strftime("%Y"))-1}-{pmonth8}-01'
+        todatem8 = f'{int(toda.strftime("%Y"))-1}-{pmonth8}-31'
+        print("################################")
+        print("str",fromdatem8)
+        print("str",todatem8)
+        print("str",fromdatem8)
+        print("################################")
+        
+        
+    else: 
+        fromdatem8 = f'{toda.strftime("%Y")}-0{pmonth8}-01'
+        todatem8 = f'{toda.strftime("%Y")}-0{pmonth8}-31'
+        
+    pmonth9 = int(toda.strftime("%m")) - 10
+    print(pmonth9)
+    if pmonth9 == 0:
+        pmonth9 = 12
+    elif pmonth9 == -1:
+        pmonth9 = 11
+    elif pmonth9 == -2:
+        pmonth9 = 10
+    elif pmonth9 == -3:
+        pmonth9 = 9
+    elif pmonth9 == -4:
+        pmonth9 = 8
+    elif pmonth9 == -5:
+        pmonth9 = 7
+    elif pmonth9 == -6:
+        pmonth9 = 6
+    elif pmonth9 == -7:
+        pmonth9 = 5
+    elif pmonth9 == -8:
+        pmonth9 = 4
+    elif pmonth9 == -9:
+        pmonth9 = 3
+    elif pmonth9 == -10:
+        pmonth9 = 2
+    elif pmonth9 == -11:
+        pmonth9 = 1
+    else:
+        pmonth9 = pmonth9
+        
+    print(pmonth9)
+    print('#########################',int(toda.strftime("%m")) - 10)
+    tod11 = pmonth9
+    print(tod11)
+    if int(toda.strftime("%m")) - 10 == -1 or int(toda.strftime("%m")) - 10 == -2 or int(toda.strftime("%m")) - 10 == -3 or int(toda.strftime("%m")) - 10 == -4 or int(toda.strftime("%m")) - 10 == -5  or int(toda.strftime("%m")) - 10 == -6  or int(toda.strftime("%m")) - 10 == -7  or int(toda.strftime("%m")) - 10 == -8 or int(toda.strftime("%m")) - 10 == -9 or int(toda.strftime("%m")) - 10 == -10  or int(toda.strftime("%m")) - 10 == -11  or int(toda.strftime("%m")) - 10 == -12:
+        
+        
+        year = int(toda.strftime("%Y"))-1
+        print('year=',year)
+        fromdatem9 = f'{int(toda.strftime("%Y"))-1}-{pmonth9}-01'
+        todatem9 = f'{int(toda.strftime("%Y"))-1}-{pmonth9}-31'
+        print("################################")
+        print("str",fromdatem9)
+        print("str",todatem9)
+        print("str",fromdatem9)
+        print("################################")
+        
+        
+    else: 
+        fromdatem9 = f'{toda.strftime("%Y")}-0{pmonth9}-01'
+        todatem9 = f'{toda.strftime("%Y")}-0{pmonth9}-31'
+        
+        
+    pmonth10 = int(toda.strftime("%m")) - 11
+    print(pmonth10)
+    if pmonth10 == 0:
+        pmonth10 = 12
+    elif pmonth10 == -1:
+        pmonth10 = 11
+    elif pmonth10 == -2:
+        pmonth10 = 10
+    elif pmonth10 == -3:
+        pmonth10 = 9
+    elif pmonth10 == -4:
+        pmonth10 = 8
+    elif pmonth10 == -5:
+        pmonth10 = 7
+    elif pmonth10 == -6:
+        pmonth10 = 6
+    elif pmonth10 == -7:
+        pmonth10 = 5
+    elif pmonth10 == -8:
+        pmonth10 = 4
+    elif pmonth10 == -9:
+        pmonth10 = 3
+    elif pmonth10 == -10:
+        pmonth10 = 2
+    elif pmonth10 == -11:
+        pmonth10 = 1
+    else:
+        pmonth10 = pmonth10
+        
+    print(pmonth10)
+    print('#########################',int(toda.strftime("%m")) - 11)
+    tod12 = pmonth10
+    print(tod12)
+    if int(toda.strftime("%m")) - 11 == -1 or int(toda.strftime("%m")) - 11 == -2 or int(toda.strftime("%m")) - 11 == -3 or int(toda.strftime("%m")) - 11 == -4 or int(toda.strftime("%m")) - 11 == -5  or int(toda.strftime("%m")) - 11 == -6  or int(toda.strftime("%m")) - 11 == -7  or int(toda.strftime("%m")) - 11 == -8 or int(toda.strftime("%m")) - 11 == -9 or int(toda.strftime("%m")) - 11 == -10  or int(toda.strftime("%m")) - 11 == -11  or int(toda.strftime("%m")) - 11 == -12:
+        
+        
+        year = int(toda.strftime("%Y"))-1
+        print('year=',year)
+        fromdatem10 = f'{int(toda.strftime("%Y"))-1}-{pmonth10}-01'
+        todatem10 = f'{int(toda.strftime("%Y"))-1}-{pmonth10}-31'
+        print("################################")
+        print("str",fromdatem10)
+        print("str",todatem10)
+        print("str",fromdatem10)
+        print("################################")
+        
+        
+    else: 
+        fromdatem10 = f'{toda.strftime("%Y")}-0{pmonth10}-01'
+        todatem10 = f'{toda.strftime("%Y")}-0{pmonth10}-31'
         
     
      
